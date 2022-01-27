@@ -1,0 +1,331 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="cfff3909-c91b-422e-9b4e-d005af1123c2" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Age Of Casualty</ID>
+  <Name>Age Of Casualty</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="3" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1166" scrolltop="-3916" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="7684" y="10859" backcolor="16119285" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="Age_of_Casualty" left="20" top="0" logicalid="2" controlid="1" masterid="0" hint1="0" hint2="0" width="5313" height="3027" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000c1140000d30b0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_Age_of_Casualty" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-1166</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-3916</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>20</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ARDiagramLayout</Name>
+      <Value>
+        <DiagramLayout ZoomPercent="100" ViewPortX="0" ViewPortY="0" xmlns="">
+          <Shapes NodeWidth="234">
+            <Shape Id="Age Casualty SK" Expanded="false">
+              <Attributes>
+                <Attribute Id="Age Casualty SK" />
+                <Attribute Id="Age Band Of Casualty Name" />
+                <Attribute Id="Age Group Of Casualty Name" />
+              </Attributes>
+              <Position x="20" y="20" />
+            </Shape>
+            <Shape Id="Age" Expanded="false">
+              <Attributes>
+                <Attribute Id="Age" />
+              </Attributes>
+              <Position x="317" y="20" />
+            </Shape>
+            <Shape Id="Age Group Of Casualty" Expanded="false">
+              <Attributes>
+                <Attribute Id="Age Group Of Casualty" />
+              </Attributes>
+              <Position x="615" y="20" />
+            </Shape>
+            <Shape Id="Age Band Of Casualty" Expanded="false">
+              <Attributes>
+                <Attribute Id="Age Band Of Casualty" />
+              </Attributes>
+              <Position x="615" y="69" />
+            </Shape>
+          </Shapes>
+        </DiagramLayout>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="0b8975c8-8a3c-4636-9712-d529371d811e">
+    <DataSourceViewID>OLAPCUBE_TTKD10</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="f9a9b46b-eaaa-4a73-9ef8-7513f176e743">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="63ca3b1d-6092-483e-bdb6-18bb5a1b9b71">
+      <ID>Age Casualty SK</ID>
+      <Name>Age Casualty SK</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="5271e8ab-fbdf-48b1-9e90-69c89f468724">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4869d002-d734-47ed-9891-14d21b750cc9">
+            <TableID>dbo_Age_of_Casualty</TableID>
+            <ColumnID>AgeCasualty_SK</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="9bb4962f-f1b8-45b5-8ff5-491031539de0">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="77812f16-e8b1-45a4-950c-c8845df6e20a">
+          <TableID>dbo_Age_of_Casualty</TableID>
+          <ColumnID>AgeCasualty_SK</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="448303bb-115f-478c-b89e-bae7a1cdc375">
+          <AttributeID>Age</AttributeID>
+          <Name>Age</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="3f657c08-d449-4829-9f53-04523a45a77c">
+          <AttributeID>Age Band Of Casualty Name</AttributeID>
+          <Name>Age Band Of Casualty Name</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="b6c46a57-7c93-4688-96c2-873df1e6b0fc">
+          <AttributeID>Age Group Of Casualty Name</AttributeID>
+          <Name>Age Group Of Casualty Name</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="77c0d0d1-1134-48fa-9bb7-f732c0d07398">
+      <ID>Age</ID>
+      <Name>Age</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="9b284ff5-525c-49bf-9196-b8de932653a4">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="29714abe-7f54-4b6d-adca-31a1df7610ca">
+            <TableID>dbo_Age_of_Casualty</TableID>
+            <ColumnID>Age</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="b95b5979-0b28-407b-b2c1-6fccddc7710e">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="bee91c78-51ff-4753-9305-e0c51d2b9ee5">
+            <TableID>dbo_Age_of_Casualty</TableID>
+            <ColumnID>Age_Band_of_Casualty</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="b879018e-8fba-4c4b-a6e7-7b0afb412d9e">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="355b4e99-d0ca-4770-9587-c48450eeff3e">
+            <TableID>dbo_Age_of_Casualty</TableID>
+            <ColumnID>Age_Group_of_Casualty</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="6c135b2b-8bc8-48ca-8d01-a37c45fd1629">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="c13bd65a-8854-428d-b41d-f531922e1779">
+          <TableID>dbo_Age_of_Casualty</TableID>
+          <ColumnID>Age</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="c678efcc-fb3a-4c21-b9a8-7a60a8439ac4">
+          <AttributeID>Age Band Of Casualty</AttributeID>
+          <Name>Age Band Of Casualty</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="3246254b-d27b-4977-9a0d-4eab6685cf2c">
+          <AttributeID>Age Group Of Casualty</AttributeID>
+          <Name>Age Group Of Casualty</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="05daa2ae-98ee-452a-8f4a-182ccf15b13b">
+      <ID>Age Band Of Casualty</ID>
+      <Name>Age Band Of Casualty</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="a6d3b9dd-5c25-4f9f-b7d9-1dedeed9b691">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="3efd39a8-2606-419b-b2c5-5f98ad5a50d3">
+            <TableID>dbo_Age_of_Casualty</TableID>
+            <ColumnID>Age_Band_of_Casualty</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="0e9c3f94-8a15-442a-ab9c-28f217e096b0">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="3c4e8937-58a1-4596-a83c-c4687eaf0bf3">
+          <TableID>dbo_Age_of_Casualty</TableID>
+          <ColumnID>Age_Band_of_Casualty</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="fdfb2b58-e669-43e1-a7df-ad381c106299">
+      <ID>Age Band Of Casualty Name</ID>
+      <Name>Age Band Of Casualty Name</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="c0cccfd8-2197-4c82-a467-e287327a3b9b">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a723e1b1-e0f4-4e66-8e6a-b0f4d1e84373">
+            <TableID>dbo_Age_of_Casualty</TableID>
+            <ColumnID>Age_Band_of_Casualty_Name</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="05e4cf9a-1f37-4cdc-8a96-5b012fc1068b">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="a00160fb-c51e-4116-b7de-e0953a9b4da5">
+          <TableID>dbo_Age_of_Casualty</TableID>
+          <ColumnID>Age_Band_of_Casualty_Name</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="66af2c7d-9cc6-45cd-972e-2a55974647a5">
+      <ID>Age Group Of Casualty</ID>
+      <Name>Age Group Of Casualty</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="44b942a6-700b-4437-b917-ffa58327d05b">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="57d63aa6-e058-4840-b665-14ec358495df">
+            <TableID>dbo_Age_of_Casualty</TableID>
+            <ColumnID>Age_Group_of_Casualty</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="ddb2c75f-88ae-4d14-a75e-3588d76e2957">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="f5c9a437-5151-413e-a179-93a69d3c9234">
+          <TableID>dbo_Age_of_Casualty</TableID>
+          <ColumnID>Age_Group_of_Casualty</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="7052fccf-5f34-48d2-8cba-2623a549d0d6">
+      <ID>Age Group Of Casualty Name</ID>
+      <Name>Age Group Of Casualty Name</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ff2c33f4-3996-42ca-96b0-595565f6744e">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4473c95b-441e-4058-b1e5-69a0018d1037">
+            <TableID>dbo_Age_of_Casualty</TableID>
+            <ColumnID>Age_Group_of_Casualty_Name</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="cdcf832b-1a93-407e-8094-c09fb44b061e">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="7a4fc0b7-9eb4-4322-904e-ed7020e1391b">
+          <TableID>dbo_Age_of_Casualty</TableID>
+          <ColumnID>Age_Group_of_Casualty_Name</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <Hierarchies>
+    <Hierarchy dwd:design-time-name="dbff009d-f5cc-4c12-99fd-0066bac98fde">
+      <ID>Hierarchy</ID>
+      <Name>Hierarchy_Band</Name>
+      <Levels>
+        <Level dwd:design-time-name="a2f4d980-4fb9-4601-b073-f22921f57598">
+          <ID>Age Band Of Casualty</ID>
+          <Name>Age Band Of Casualty</Name>
+          <SourceAttributeID>Age Band Of Casualty</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="c544e9bf-e135-4700-9cbe-400333bdecd9">
+          <ID>Age</ID>
+          <Name>Age</Name>
+          <SourceAttributeID>Age</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+    <Hierarchy dwd:design-time-name="7732a1ec-e3c5-4c95-8f79-11470c09d62e">
+      <ID>Hierarchy 1</ID>
+      <Name>Hierarchy_Group</Name>
+      <Levels>
+        <Level dwd:design-time-name="0c6ceacc-984a-4e34-8da0-c60c2239c511">
+          <ID>Age Group Of Casualty</ID>
+          <Name>Age Group Of Casualty</Name>
+          <SourceAttributeID>Age Group Of Casualty</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="c5218aa7-3a95-4139-8e45-35eee9771ed2">
+          <ID>Age</ID>
+          <Name>Age</Name>
+          <SourceAttributeID>Age</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+  </Hierarchies>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

@@ -1,0 +1,78 @@
+﻿--R1: Thống kê số lượng nạn nhân theo Mức Độ Nghiêm Trọng (Fatal, Serious, Slight) ở các Địa phương (Local_Authority_(District)) trong tất cả các năm
+SELECT non empty [Casualty Severity].[Name Severity].[Name Severity] on columns,
+non empty [Local Authority District].[Name Local Authority District].[Name Local Authority District] on rows
+from [OLAPCUBE_TTKD10]
+where [Measures].[Numberof Casualty]
+
+--R2: Thống kê số lượng nạn nhân theo Mức Độ Nghiêm Trọng ở các Địa Phương (Local_Authority_(District)) theo các Quý trong từng năm.
+select 
+non empty [Local Authority District].[Name Local Authority District].[Name Local Authority District]
+*
+[Casualty Severity].[Name Severity].[Name Severity] on rows, 
+non empty {[Date].[Hierarchy].[Quarter]*[Date].[Year].[Year]} on columns
+from [OLAPCUBE_TTKD10]
+where [Measures].[Numberof Casualty]
+
+--R3: Thống kê số lượng người tử vong theo Giới Tính, Loại Nạn Nhân (Casualty Type) và Nhóm Tuổi (Age_Band_of_Casualty) theo các năm
+select non empty
+[Sex Of Casualty].[Name].[Name] *
+[Casualty Type].[Name Casualty Type].[Name Casualty Type]*
+[Age Of Casualty].[Hierarchy_Band].[Age Band Of Casualty] on rows, 
+non empty [Date].[Hierarchy].[Year] on columns
+from [OLAPCUBE_TTKD10]
+where ([Measures].[Numberof Casualty],[Casualty Severity].[Casualty Severity SK].&[1])
+
+--R4: Thống kê số lượng TNGT theo Mức Độ Nghiêm Trọng và Thời Điểm Trong Ngày 
+--(Morning: 5am-12pm, Afternoon: 12pm-5pm, Evening: 5pm-9pm, Night: 9pm-5am) trong các năm.
+select non empty [Time].[Hierarchy].[Session] on rows,
+non empty [Accident Severity].[Name Severity].[Name Severity] on columns
+from [OLAPCUBE_TTKD10]
+where [Measures].[Numberof Accidents]
+
+--R5: Thống kê số lượng TNGT theo Mức Độ Nghiêm Trọng, Vùng (Urban_or_Rural_Area), và Kiểu Đường (Road Type) trong các năm.
+select non empty  
+[Urban Or Rural].[Name Urban Or Rural Area].[Name Urban Or Rural Area] 
+* 
+[Road Type].[Name Road Type].[Name Road Type] on rows,
+non empty [Accident Severity].[Name Severity].[Name Severity] on columns
+from [OLAPCUBE_TTKD10]
+where [Measures].[Numberof Accidents]
+
+--R6: Thống kê số lượng nạn nhân theo Mức Độ Nghiêm Trọng, Loại Nạn Nhân (Casualty Type) và Độ Tuổi trong các năm, 
+--Độ Tuổi được định nghĩa như sau:  
+--Children: 0-15  Young adult: 0-17  Adult: 18-59  60 and over: 60-... 
+select non empty
+[Casualty Type].[Name Casualty Type].[Name Casualty Type]*
+[Age Of Casualty].[Hierarchy_Group].[Age Group Of Casualty] * [Age Of Casualty].[Age Group Of Casualty Name].[Age Group Of Casualty Name] on rows, 
+non empty [Casualty Severity].[Name Severity].[Name Severity] on columns
+from [OLAPCUBE_TTKD10]
+where [Measures].[Numberof Casualty]
+
+--R7: Tổng hợp số lượng tai nạn theo Mục Đích Hành Trình (Journey Purpose) và Loại Phương Tiện (Vehicle_Type)
+select non empty
+[Journey Purpose].[Name Journey Purpose].[Name Journey Purpose] on rows,
+non empty [Vehicle Type].[Name Vehicle Type].[Name Vehicle Type] on columns
+from [OLAPCUBE_TTKD10]
+where [Measures].[Numberof Vehicle]
+
+--R9: Thống kê số lượng tai nạn theo Mức Độ Nghiêm Trọng, Loại Phương Tiện (Vehicle Type), Built-up Road trong các năm. 
+select non empty [Accident Severity].[Name Severity].[Name Severity] on rows,
+non empty [Built Up Road Type].[Name Built Up Road Type].[Name Built Up Road Type] on columns
+from [OLAPCUBE_TTKD10]
+where [Measures].[Numberof Accidents]
+
+--R11: Định nghĩa fact Variance để tính mức độ tăng giảm của TNGT theo đơn vị phần trăm qua các năm (Calculated Measures) 
+with member [Measures].[last Numberof Accidents] as
+(ParallelPeriod([Date].[Hierarchy].[Year]
+, 0
+,[Date].[Hierarchy].CurrentMember)
+,[Measures].[Numberof Accidents]) 
+/ 
+(ParallelPeriod([Date].[Hierarchy].[Year]
+, 1
+,[Date].[Hierarchy].CurrentMember)
+,[Measures].[Numberof Accidents])
+select 
+non empty [Measures].[last Numberof Accidents] on rows,
+non empty[Date].[Hierarchy].[Year] on columns
+from [OLAPCUBE_TTKD10]

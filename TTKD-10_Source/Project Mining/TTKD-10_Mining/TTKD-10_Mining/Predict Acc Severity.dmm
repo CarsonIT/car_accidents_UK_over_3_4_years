@@ -1,0 +1,240 @@
+﻿<MiningStructure xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="999f4e37-1f4d-4677-a0bc-4afe1da7ff6f" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Predict Acc Severity</ID>
+  <Name>Predict Acc Severity</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CaseTableName</Name>
+      <Value>dbo_Predict_AccSeverity</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="796e8622-11b3-477d-8762-04ce1f8fb670">
+    <DataSourceViewID>Mining</DataSourceViewID>
+  </Source>
+  <Columns>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="e1ab258d-ebca-4921-aea9-51ee7fed4d34">
+      <ID>Accident Index</ID>
+      <Name>Accident Index</Name>
+      <IsKey>true</IsKey>
+      <Type>Text</Type>
+      <Content>Key</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="55747b2a-86e8-445e-967c-4502241223be">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1c3c1c82-ade7-40e1-bfe7-a43fc5039f84">
+            <TableID>dbo_Predict_AccSeverity</TableID>
+            <ColumnID>Accident_Index</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="60690a41-7562-4d52-a991-81e852ebd172">
+      <ID>Accident Severity Name</ID>
+      <Name>Accident Severity Name</Name>
+      <Type>Text</Type>
+      <Content>Discrete</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="791b649d-5be1-4584-ac30-f47f99611b2a">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4f8083df-beb9-4c95-aea1-c99b1357aba5">
+            <TableID>dbo_Predict_AccSeverity</TableID>
+            <ColumnID>AccidentSeverityName</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="e3b6eae5-bf42-41b0-8528-03a515b7ac71">
+      <ID>Name Light Conditon</ID>
+      <Name>Name Light Conditon</Name>
+      <Type>Text</Type>
+      <Content>Discrete</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="1152253b-7e56-462f-9bdc-fbd4e53f773f">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="99fd6031-47bf-4281-9442-7867f75b897a">
+            <TableID>dbo_Predict_AccSeverity</TableID>
+            <ColumnID>Name_LightConditon</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="218bbe71-7f54-4010-a292-fc45a1b9a1cc">
+      <ID>Name Road Surface</ID>
+      <Name>Name Road Surface</Name>
+      <Type>Text</Type>
+      <Content>Discrete</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="04ac7e5e-d3dc-4250-8ce5-d71011e31863">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="7512e458-efc6-425c-b133-7945aeaf4dc7">
+            <TableID>dbo_Predict_AccSeverity</TableID>
+            <ColumnID>Name_RoadSurface</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="a2fabc87-9861-4615-b2d9-0951bd6266d2">
+      <ID>Name Special Condition</ID>
+      <Name>Name Special Condition</Name>
+      <Type>Text</Type>
+      <Content>Discrete</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="26918717-924f-4cda-b6e1-d9eb6d5184b3">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d84c5057-2f77-4735-86a7-feb2e7ff7a28">
+            <TableID>dbo_Predict_AccSeverity</TableID>
+            <ColumnID>Name_SpecialCondition</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="04c3e1f2-1340-4f33-981a-449a73a3b6de">
+      <ID>Name Weather</ID>
+      <Name>Name Weather</Name>
+      <Type>Text</Type>
+      <Content>Discrete</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="faaca96b-c703-41a6-93b6-0e50be13dcea">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="bccb826b-e7ab-497b-b012-577ac4b8a1d6">
+            <TableID>dbo_Predict_AccSeverity</TableID>
+            <ColumnID>Name_Weather</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="34521598-2eb8-491a-bb56-1042621c9bbc">
+      <ID>Road Type Name</ID>
+      <Name>Road Type Name</Name>
+      <Type>Text</Type>
+      <Content>Discrete</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="914b9ba0-6241-487c-931e-94d7a5c4cd56">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ee76d204-93fc-4b9e-9190-ba6fcc5f2b50">
+            <TableID>dbo_Predict_AccSeverity</TableID>
+            <ColumnID>RoadTypeName</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="63ec727f-93a2-4b0a-93bc-d93ed6d52b2b">
+      <ID>Urban Rural Name</ID>
+      <Name>Urban Rural Name</Name>
+      <Type>Text</Type>
+      <Content>Discrete</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="32063fb7-8c34-4c76-a519-e2e1a2218864">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="40e58225-5e9a-4c3d-b317-c95b33a04f64">
+            <TableID>dbo_Predict_AccSeverity</TableID>
+            <ColumnID>UrbanRuralName</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+  </Columns>
+  <MiningModels>
+    <MiningModel dwd:design-time-name="53f8a8e9-5554-442b-8efc-def3a1bb0266">
+      <ID>Predict Acc Severity</ID>
+      <Name>Predict Acc Severity</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Algorithm>Microsoft_Decision_Trees</Algorithm>
+      <Columns>
+        <Column dwd:design-time-name="eb5e3ebb-16b3-4cc2-a109-49b171ebb795">
+          <ID>Accident Index</ID>
+          <Name>Accident Index</Name>
+          <SourceColumnID>Accident Index</SourceColumnID>
+          <Usage>Key</Usage>
+        </Column>
+        <Column dwd:design-time-name="e41b4c10-f291-4661-9a63-42d62f282129">
+          <ID>Accident Severity Name</ID>
+          <Name>Accident Severity Name</Name>
+          <SourceColumnID>Accident Severity Name</SourceColumnID>
+          <Usage>PredictOnly</Usage>
+        </Column>
+        <Column dwd:design-time-name="2c2dd1d6-efcf-4123-bfa6-67a15ed3f717">
+          <ID>Name Light Conditon</ID>
+          <Name>Name Light Conditon</Name>
+          <SourceColumnID>Name Light Conditon</SourceColumnID>
+        </Column>
+        <Column dwd:design-time-name="fb0384e7-4b55-42eb-919d-2fa9751f5188">
+          <ID>Name Road Surface</ID>
+          <Name>Name Road Surface</Name>
+          <SourceColumnID>Name Road Surface</SourceColumnID>
+        </Column>
+        <Column dwd:design-time-name="407b9f07-fd11-4104-bac4-b788ce7149d8">
+          <ID>Name Special Condition</ID>
+          <Name>Name Special Condition</Name>
+          <SourceColumnID>Name Special Condition</SourceColumnID>
+        </Column>
+        <Column dwd:design-time-name="d4a0c27c-16f2-48ce-82e8-d3ad9dca7cc0">
+          <ID>Name Weather</ID>
+          <Name>Name Weather</Name>
+          <SourceColumnID>Name Weather</SourceColumnID>
+        </Column>
+        <Column dwd:design-time-name="c6e65d69-0ebf-4bd6-9f6f-85998ed14875">
+          <ID>Road Type Name</ID>
+          <Name>Road Type Name</Name>
+          <SourceColumnID>Road Type Name</SourceColumnID>
+        </Column>
+        <Column dwd:design-time-name="323ed890-d2a7-4e6c-aa5b-dfdc57125c79">
+          <ID>Urban Rural Name</ID>
+          <Name>Urban Rural Name</Name>
+          <SourceColumnID>Urban Rural Name</SourceColumnID>
+        </Column>
+      </Columns>
+    </MiningModel>
+  </MiningModels>
+  <ddl100_100:HoldoutMaxPercent>30</ddl100_100:HoldoutMaxPercent>
+  <ddl100_100:HoldoutMaxCases>100000</ddl100_100:HoldoutMaxCases>
+</MiningStructure>

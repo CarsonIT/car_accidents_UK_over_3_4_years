@@ -1,0 +1,1211 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/1/2022 4:53:21 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="TTKD10"
+  DTS:CreatorName="TTKD10\ASUS"
+  DTS:DTSID="{D686BC49-E936-42EA-81DF-56079AD8A3DC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{6B421FFD-D2BA-47E9-B9F7-0204AC86C437}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.MetaData_UK]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{AF1C0B55-E798-43DA-ADE6-506A1267424A}"
+      DTS:ObjectName="LocalHost.MetaData_UK">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=MetaData_UK;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0E143AA8-A343-4536-98B9-4829A9AC100E}"
+      DTS:ObjectName="LocalHost.UK_Accident_DDS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=UK_Accident_DDS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.UK_Accident_NDS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9C157ED1-C1CE-4C0A-8153-4B579490B124}"
+      DTS:ObjectName="LocalHost.UK_Accident_NDS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=UK_Accident_NDS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1D48CEFF-208F-46C9-9F9D-2DF00AFC5FFE}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtCET9">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3022DC9E-6772-4094-8B3B-D99DF4BE9B2C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtLSET9">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Get LSET to MetaData"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{064686c8-6859-4220-a5e1-d9abba38e584}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get LSET to MetaData"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{AF1C0B55-E798-43DA-ADE6-506A1267424A}"
+          SQLTask:SqlStatementSource="select LSET,CET from Data_Flow where Name='DDS_UrbanOrRural'"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="LSET"
+            SQLTask:DtsVariableName="User::dtLSET9" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="CET"
+            SQLTask:DtsVariableName="User::dtCET9" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SET CET to Metadata"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{711f6a1f-ae68-47b0-94db-1dfa55757f12}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SET CET to Metadata"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{AF1C0B55-E798-43DA-ADE6-506A1267424A}"
+          SQLTask:SqlStatementSource="update Data_Flow set CET=getdate() where Name='DDS_UrbanOrRural'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SET LSET to Metadata 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{4a609a93-f469-4b51-80b6-1f26e5fc4386}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SET LSET to Metadata 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{AF1C0B55-E798-43DA-ADE6-506A1267424A}"
+          SQLTask:SqlStatementSource="update Data_Flow set LSET=getdate() where Name='DDS_UrbanOrRural'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\UrbanOrRural NDS_DDS"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0386fc37-429b-4a26-b585-e135a4e3242a}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="UrbanOrRural NDS_DDS"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\UrbanOrRural NDS_DDS\Insert Destination 1"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Destination 1"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[UrbanOrRural]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UrbanOrRural NDS_DDS\Insert Destination 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\UrbanOrRural NDS_DDS\Insert Destination 1.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\Insert Destination 1.Inputs[OLE DB Destination Input].Columns[ID_UrbanorRuralArea]"
+                      cachedDataType="i4"
+                      cachedName="ID_UrbanorRuralArea"
+                      externalMetadataColumnId="Package\UrbanOrRural NDS_DDS\Insert Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[UrbanOrRural_NK]"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[ID_UrbanorRuralArea]" />
+                    <inputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\Insert Destination 1.Inputs[OLE DB Destination Input].Columns[Name_urArea]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Name_urArea"
+                      externalMetadataColumnId="Package\UrbanOrRural NDS_DDS\Insert Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[NameUrbanOrRuralArea]"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[Name_urArea]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UrbanOrRural NDS_DDS\Insert Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[UrbanOrRural_SK]"
+                      dataType="i4"
+                      name="UrbanOrRural_SK" />
+                    <externalMetadataColumn
+                      refId="Package\UrbanOrRural NDS_DDS\Insert Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[UrbanOrRural_NK]"
+                      dataType="i4"
+                      name="UrbanOrRural_NK" />
+                    <externalMetadataColumn
+                      refId="Package\UrbanOrRural NDS_DDS\Insert Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[NameUrbanOrRuralArea]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NameUrbanOrRuralArea" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UrbanOrRural NDS_DDS\Insert Destination 1.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\UrbanOrRural NDS_DDS\Insert Destination 1.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\Insert Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UrbanOrRural NDS_DDS\Insert Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\Insert Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UrbanOrRural NDS_DDS\Insert Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 2"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command 2"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[UrbanOrRural] SET [NameUrbanOrRuralArea] = ? WHERE [UrbanOrRural_NK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 2.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 2.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 2.Inputs[OLE DB Command Input].Columns[Name_urArea]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Name_urArea"
+                      externalMetadataColumnId="Package\UrbanOrRural NDS_DDS\OLE DB Command 2.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[Name_urArea]" />
+                    <inputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 2.Inputs[OLE DB Command Input].Columns[ID_UrbanorRuralArea]"
+                      cachedDataType="i4"
+                      cachedName="ID_UrbanorRuralArea"
+                      externalMetadataColumnId="Package\UrbanOrRural NDS_DDS\OLE DB Command 2.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[ID_UrbanorRuralArea]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 2.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 2.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 2.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\UrbanOrRural NDS_DDS\OLE DB Command 2.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 2.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\UrbanOrRural NDS_DDS\OLE DB Command 2.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 2.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UrbanOrRural NDS_DDS\OLE DB Command 2.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 2.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UrbanOrRural NDS_DDS\OLE DB Command 2.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 3"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command 3"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[UrbanOrRural] SET [NameUrbanOrRuralArea] = ? WHERE [UrbanOrRural_NK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 3.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 3.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 3.Inputs[OLE DB Command Input].Columns[Name_urArea]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Name_urArea"
+                      externalMetadataColumnId="Package\UrbanOrRural NDS_DDS\OLE DB Command 3.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[Name_urArea]" />
+                    <inputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 3.Inputs[OLE DB Command Input].Columns[ID_UrbanorRuralArea]"
+                      cachedDataType="i4"
+                      cachedName="ID_UrbanorRuralArea"
+                      externalMetadataColumnId="Package\UrbanOrRural NDS_DDS\OLE DB Command 3.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[ID_UrbanorRuralArea]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 3.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 3.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 3.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\UrbanOrRural NDS_DDS\OLE DB Command 3.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 3.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\UrbanOrRural NDS_DDS\OLE DB Command 3.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 3.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UrbanOrRural NDS_DDS\OLE DB Command 3.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\OLE DB Command 3.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UrbanOrRural NDS_DDS\OLE DB Command 3.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="Slowly Changing Dimension"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [NameUrbanOrRuralArea], [UrbanOrRural_NK] FROM [dbo].[UrbanOrRural]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Connections[LookupConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Name_urArea]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Name_urArea"
+                      externalMetadataColumnId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[NameUrbanOrRuralArea]"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[Name_urArea]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[ID_UrbanorRuralArea]"
+                      cachedDataType="i4"
+                      cachedName="ID_UrbanorRuralArea"
+                      externalMetadataColumnId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[UrbanOrRural_NK]"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[ID_UrbanorRuralArea]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[NameUrbanOrRuralArea]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NameUrbanOrRuralArea" />
+                    <externalMetadataColumn
+                      refId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[UrbanOrRural_NK]"
+                      dataType="i4"
+                      name="UrbanOrRural_NK" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="UrbanOrRural' NDS"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Accident]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from Urban_or_Rural_Area  where  
+((CreatedDate&gt;=? and CreatedDate&lt;?) or (UpdatedDate&gt;=? and UpdatedDate&lt;?))</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0:Input",{3022DC9E-6772-4094-8B3B-D99DF4BE9B2C};"Parameter1:Input",{1D48CEFF-208F-46C9-9F9D-2DF00AFC5FFE};"Parameter2:Input",{3022DC9E-6772-4094-8B3B-D99DF4BE9B2C};"Parameter3:Input",{1D48CEFF-208F-46C9-9F9D-2DF00AFC5FFE};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_NDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_NDS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[ID_UrbanorRuralArea]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].ExternalColumns[ID_UrbanorRuralArea]"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[ID_UrbanorRuralArea]"
+                      name="ID_UrbanorRuralArea"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[Name_urArea]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].ExternalColumns[Name_urArea]"
+                      length="50"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[Name_urArea]"
+                      name="Name_urArea"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].ExternalColumns[ID_UrbanorRuralArea]"
+                      dataType="i4"
+                      name="ID_UrbanorRuralArea" />
+                    <externalMetadataColumn
+                      refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output].ExternalColumns[Name_urArea]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Name_urArea" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      dataType="i4"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Error Output].Columns[ID_UrbanorRuralArea]"
+                      dataType="i4"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Error Output].Columns[ID_UrbanorRuralArea]"
+                      name="ID_UrbanorRuralArea" />
+                    <outputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Error Output].Columns[Name_urArea]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Error Output].Columns[Name_urArea]"
+                      name="Name_urArea" />
+                    <outputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      name="CreatedDate" />
+                    <outputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      name="UpdatedDate" />
+                    <outputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\UrbanOrRural NDS_DDS.Paths[Changing Attribute Updates Output]"
+              endId="Package\UrbanOrRural NDS_DDS\OLE DB Command 3.Inputs[OLE DB Command Input]"
+              name="Changing Attribute Updates Output"
+              startId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]" />
+            <path
+              refId="Package\UrbanOrRural NDS_DDS.Paths[Inferred Member Updates Output]"
+              endId="Package\UrbanOrRural NDS_DDS\OLE DB Command 2.Inputs[OLE DB Command Input]"
+              name="Inferred Member Updates Output"
+              startId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]" />
+            <path
+              refId="Package\UrbanOrRural NDS_DDS.Paths[New Output]"
+              endId="Package\UrbanOrRural NDS_DDS\Insert Destination 1.Inputs[OLE DB Destination Input]"
+              name="New Output"
+              startId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Outputs[New Output]" />
+            <path
+              refId="Package\UrbanOrRural NDS_DDS.Paths[OLE DB Source Output]"
+              endId="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              name="OLE DB Source Output"
+              startId="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{e429f6aa-d7e7-41bb-9e5f-8b76343bf114}"
+      DTS:From="Package\SET CET to Metadata"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Get LSET to MetaData" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{b4637189-7f9c-4e9e-bae6-926681ab2949}"
+      DTS:From="Package\Get LSET to MetaData"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\UrbanOrRural NDS_DDS" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{cb982fe0-2e32-4591-bab3-e09eda52f0f4}"
+      DTS:From="Package\UrbanOrRural NDS_DDS"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SET LSET to Metadata 1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\Get LSET to MetaData"
+          TopLeft="73.333333825308,157.047060207017" />
+        <NodeLayout
+          Size="178.4,41.6"
+          Id="Package\SET CET to Metadata"
+          TopLeft="77.6190471622139,60" />
+        <NodeLayout
+          Size="193.6,41.6"
+          Id="Package\SET LSET to Metadata 1"
+          TopLeft="66.9047622872587,337.235298847245" />
+        <NodeLayout
+          Size="196,41.6"
+          Id="Package\UrbanOrRural NDS_DDS"
+          TopLeft="60,248.525492819009" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="165.676190493761,101.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.4470602070172"
+              Start="0,0"
+              End="0,47.9470602070172">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.9470602070172" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="161.266666912654,198.647060207017">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.878432611992"
+              Start="0,0"
+              End="0,42.378432611992">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.378432611992" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="160.852381143629,290.125492819009">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.109806028236"
+              Start="0,0"
+              End="0,39.609806028236">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.609806028236" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\UrbanOrRural NDS_DDS">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="169.6,41.6"
+          Id="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS"
+          TopLeft="921.7,5.49999999999973" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension"
+          TopLeft="902.5,107.1" />
+        <EdgeLayout
+          Id="Package\UrbanOrRural NDS_DDS.Paths[OLE DB Source Output]"
+          TopLeft="1006.5,47.0999999999997">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="s"
+          ParentId="Package\UrbanOrRural NDS_DDS"
+          FontInfo="{assembly:Null}"
+          Size="33.6,40"
+          Id="7948928c-2f7e-4a03-ba67-ffc81af3e3c5"
+          TopLeft="1391.7,209.5" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\UrbanOrRural NDS_DDS\Insert Destination 1"
+          TopLeft="689.5,208.7" />
+        <EdgeLayout
+          Id="Package\UrbanOrRural NDS_DDS.Paths[New Output]"
+          TopLeft="956.5,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-183,60.0000000000001"
+              Start="0,0"
+              End="-183,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5063291139241" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5063291139241"
+                    Point2="0,20.5063291139241"
+                    Point3="-4,20.5063291139241" />
+                  <mssgle:LineSegment
+                    End="-179,20.5063291139241" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-179,20.5063291139241"
+                    Point2="-183,20.5063291139241"
+                    Point3="-183,24.5063291139241" />
+                  <mssgle:LineSegment
+                    End="-183,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-118.59138671875,25.5063291139241,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\UrbanOrRural NDS_DDS\OLE DB Command 2"
+          TopLeft="918.5,208.7" />
+        <EdgeLayout
+          Id="Package\UrbanOrRural NDS_DDS.Paths[Inferred Member Updates Output]"
+          TopLeft="1006.5,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-74.40298828125,20.4208984375,148.8059765625,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\UrbanOrRural NDS_DDS\OLE DB Command 3"
+          TopLeft="1155.5,208.7" />
+        <EdgeLayout
+          Id="Package\UrbanOrRural NDS_DDS.Paths[Changing Attribute Updates Output]"
+          TopLeft="1056.5,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="187,60"
+              Start="0,0"
+              End="187,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5063291139241" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5063291139241"
+                    Point2="0,20.5063291139241"
+                    Point3="4,20.5063291139241" />
+                  <mssgle:LineSegment
+                    End="183,20.5063291139241" />
+                  <mssgle:CubicBezierSegment
+                    Point1="183,20.5063291139241"
+                    Point2="187,20.5063291139241"
+                    Point3="187,24.5063291139241" />
+                  <mssgle:LineSegment
+                    End="187,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="14.96609375,25.5063291139241,157.0678125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\UrbanOrRural NDS_DDS\UrbanOrRural' NDS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\UrbanOrRural NDS_DDS\Slowly Changing Dimension">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionID&gt;{0E143AA8-A343-4536-98B9-4829A9AC100E}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[UrbanOrRural]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[Name_urArea]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;NameUrbanOrRuralArea&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;UrbanOrRural' NDS.Outputs[OLE DB Source Output].Columns[ID_UrbanorRuralArea]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;UrbanOrRural_NK&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command 2&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command 3&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn /&gt;
+  &lt;EndDateColumn /&gt;
+  &lt;DateVariable /&gt;
+  &lt;EnableInferredSupport&gt;true&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

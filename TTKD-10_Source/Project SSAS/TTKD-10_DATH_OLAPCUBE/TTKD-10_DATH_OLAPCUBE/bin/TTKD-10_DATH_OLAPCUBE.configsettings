@@ -1,0 +1,105 @@
+﻿<ConfigurationSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Database>
+    <DataSources>
+      <DataSource>
+        <ID>OLAPCUBE_TTKD10</ID>
+        <ConnectionString>Provider=SQLNCLI11.1;Data Source=LAPTOP-755C2GPC\MSSQL2019;Integrated Security=SSPI;Initial Catalog=UK_Accident_DDS</ConnectionString>
+        <ImpersonationInfo>
+          <ImpersonationMode xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">ImpersonateAccount</ImpersonationMode>
+          <Account xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">ASUS</Account>
+          <ImpersonationInfoSecurity xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">PasswordRemoved</ImpersonationInfoSecurity>
+        </ImpersonationInfo>
+      </DataSource>
+    </DataSources>
+    <Dimensions>
+      <Dimension>
+        <ID>Accident Severity</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Date</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Road Type</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Time</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Built Up Road Type</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Local Authority District</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Urban Or Rural</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Geography</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Age Of Casualty</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Casualty Type</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Casualty Severity</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Sex Of Casualty</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Year</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Vehicle Type</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Journey Purpose</ID>
+      </Dimension>
+    </Dimensions>
+    <Cubes>
+      <Cube>
+        <ID>OLAPCUBE_TTKD10</ID>
+        <MeasureGroups>
+          <MeasureGroup>
+            <ID>Fact Accidents</ID>
+            <Partitions>
+              <Partition>
+                <ID>Fact Accidents</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Fact Casualty</ID>
+            <Partitions>
+              <Partition>
+                <ID>Fact Casualty</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Fact Variance</ID>
+            <Partitions>
+              <Partition>
+                <ID>Fact Variance</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Fact Vehicle</ID>
+            <Partitions>
+              <Partition>
+                <ID>Fact Vehicle</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+        </MeasureGroups>
+      </Cube>
+    </Cubes>
+    <DataSourceImpersonationInfo>
+      <ImpersonationMode xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">Default</ImpersonationMode>
+      <ImpersonationInfoSecurity xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">Unchanged</ImpersonationInfoSecurity>
+    </DataSourceImpersonationInfo>
+  </Database>
+</ConfigurationSettings>

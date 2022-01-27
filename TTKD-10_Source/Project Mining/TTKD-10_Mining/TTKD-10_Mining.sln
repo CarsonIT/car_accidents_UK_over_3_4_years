@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "TTKD-10_Mining", "TTKD-10_Mining\TTKD-10_Mining.dwproj", "{BD56E83A-4505-4520-BD0C-E4FEB2FF0A23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD56E83A-4505-4520-BD0C-E4FEB2FF0A23}.Development|Default.ActiveCfg = Development
+		{BD56E83A-4505-4520-BD0C-E4FEB2FF0A23}.Development|Default.Build.0 = Development
+		{BD56E83A-4505-4520-BD0C-E4FEB2FF0A23}.Development|Default.Deploy.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {746D8302-F0C2-477C-B661-725C53033D3A}
+	EndGlobalSection
+EndGlobal

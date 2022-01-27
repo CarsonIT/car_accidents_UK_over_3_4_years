@@ -1,0 +1,1072 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/25/2021 11:22:35 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-755C2GPC"
+  DTS:CreatorName="LAPTOP-755C2GPC\ASUS"
+  DTS:DTSID="{C52A7726-A247-4782-9118-0933DEF03836}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{F9F2E481-2968-469C-9DBD-E4D309200F0C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-755C2GPC\MSSQL2019.MetaData_UK]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7F9B43B4-6C5F-45E8-831B-E2959CD08B19}"
+      DTS:ObjectName="LAPTOP-755C2GPC\MSSQL2019.MetaData_UK">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-755C2GPC\MSSQL2019;Initial Catalog=MetaData_UK;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-755C2GPC\MSSQL2019.UK_Accident]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E62EED55-FB35-474F-B3DB-DA3B5C7E84B6}"
+      DTS:ObjectName="LAPTOP-755C2GPC\MSSQL2019.UK_Accident">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-755C2GPC\MSSQL2019;Initial Catalog=UK_Accident;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-755C2GPC\MSSQL2019.UK_Accident_Stage]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1B5B019B-CA67-4DDF-9E21-F409C85E683B}"
+      DTS:ObjectName="LAPTOP-755C2GPC\MSSQL2019.UK_Accident_Stage">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-755C2GPC\MSSQL2019;Initial Catalog=UK_Accident_Stage;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{81C9DC60-CF5E-416B-9FC9-864FD1A830D7}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PCLSOA_CET">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1990</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{37D9F216-0D99-48F8-9530-B39CD88621AE}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PCLSOA_LSET">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1990</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Get LSET"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{7e8a0fd4-8e12-4ad2-81be-9e635f464c30}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get LSET"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7F9B43B4-6C5F-45E8-831B-E2959CD08B19}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="select LSET,CET  from Data_Flow where name='PCD_LSOA'"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="LSET"
+            SQLTask:DtsVariableName="User::PCLSOA_LSET" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="CET"
+            SQLTask:DtsVariableName="User::PCLSOA_CET" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Import data from PCD_LSOA to Stage"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{59148317-0695-49e4-b4dd-c5de51c6f5e7}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import data from PCD_LSOA to Stage"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="PCD_LSOA"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AccidentSeverity]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from PCD_LSOA where (CreatedDate&gt;? and CreatedDate&lt;=?) or
+(UpdatedDate&gt;? and UpdatedDate&lt;=?)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0:Input",{37D9F216-0D99-48F8-9530-B39CD88621AE};"Parameter1:Input",{81C9DC60-CF5E-416B-9FC9-864FD1A830D7};"Parameter2:Input",{37D9F216-0D99-48F8-9530-B39CD88621AE};"Parameter3:Input",{81C9DC60-CF5E-416B-9FC9-864FD1A830D7};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-755C2GPC\MSSQL2019.UK_Accident]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-755C2GPC\MSSQL2019.UK_Accident]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[pcd7]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[pcd7]"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[pcd7]"
+                      name="pcd7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[pcd8]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[pcd8]"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[pcd8]"
+                      name="pcd8"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[pcds]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[pcds]"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[pcds]"
+                      name="pcds"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[dointr]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[dointr]"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[dointr]"
+                      name="dointr"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[doterm]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[doterm]"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[doterm]"
+                      name="doterm"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[usertype]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[usertype]"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[usertype]"
+                      name="usertype"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[oa11cd]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[oa11cd]"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[oa11cd]"
+                      name="oa11cd"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[lsoa11cd]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[lsoa11cd]"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[lsoa11cd]"
+                      name="lsoa11cd"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[msoa11cd]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[msoa11cd]"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[msoa11cd]"
+                      name="msoa11cd"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[ladcd]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[ladcd]"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[ladcd]"
+                      name="ladcd"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[lsoa11nm]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[lsoa11nm]"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[lsoa11nm]"
+                      name="lsoa11nm"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[msoa11nm]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[msoa11nm]"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[msoa11nm]"
+                      name="msoa11nm"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[ladnm]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[ladnm]"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[ladnm]"
+                      name="ladnm"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[ladnmw]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[ladnmw]"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[ladnmw]"
+                      name="ladnmw"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[pcd7]"
+                      dataType="wstr"
+                      length="255"
+                      name="pcd7" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[pcd8]"
+                      dataType="wstr"
+                      length="255"
+                      name="pcd8" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[pcds]"
+                      dataType="wstr"
+                      length="255"
+                      name="pcds" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[dointr]"
+                      dataType="r8"
+                      name="dointr" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[doterm]"
+                      dataType="r8"
+                      name="doterm" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[usertype]"
+                      dataType="r8"
+                      name="usertype" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[oa11cd]"
+                      dataType="wstr"
+                      length="255"
+                      name="oa11cd" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[lsoa11cd]"
+                      dataType="wstr"
+                      length="255"
+                      name="lsoa11cd" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[msoa11cd]"
+                      dataType="wstr"
+                      length="255"
+                      name="msoa11cd" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[ladcd]"
+                      dataType="wstr"
+                      length="255"
+                      name="ladcd" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[lsoa11nm]"
+                      dataType="wstr"
+                      length="255"
+                      name="lsoa11nm" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[msoa11nm]"
+                      dataType="wstr"
+                      length="255"
+                      name="msoa11nm" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[ladnm]"
+                      dataType="wstr"
+                      length="255"
+                      name="ladnm" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].ExternalColumns[ladnmw]"
+                      dataType="wstr"
+                      length="255"
+                      name="ladnmw" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[pcd7]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[pcd7]"
+                      name="pcd7" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[pcd8]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[pcd8]"
+                      name="pcd8" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[pcds]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[pcds]"
+                      name="pcds" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[dointr]"
+                      dataType="r8"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[dointr]"
+                      name="dointr" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[doterm]"
+                      dataType="r8"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[doterm]"
+                      name="doterm" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[usertype]"
+                      dataType="r8"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[usertype]"
+                      name="usertype" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[oa11cd]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[oa11cd]"
+                      name="oa11cd" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[lsoa11cd]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[lsoa11cd]"
+                      name="lsoa11cd" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[msoa11cd]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[msoa11cd]"
+                      name="msoa11cd" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[ladcd]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[ladcd]"
+                      name="ladcd" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[lsoa11nm]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[lsoa11nm]"
+                      name="lsoa11nm" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[msoa11nm]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[msoa11nm]"
+                      name="msoa11nm" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[ladnm]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[ladnm]"
+                      name="ladnm" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[ladnmw]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[ladnmw]"
+                      name="ladnmw" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      name="CreatedDate" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      name="UpdatedDate" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="PCD_LSOA_Stage"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[PCD_LSOA_Stage]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-755C2GPC\MSSQL2019.UK_Accident_Stage]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-755C2GPC\MSSQL2019.UK_Accident_Stage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].Columns[pcd7]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="pcd7"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[pcd7]"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[pcd7]" />
+                    <inputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].Columns[pcd8]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="pcd8"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[pcd8]"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[pcd8]" />
+                    <inputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].Columns[pcds]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="pcds"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[pcds]"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[pcds]" />
+                    <inputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].Columns[dointr]"
+                      cachedDataType="r8"
+                      cachedName="dointr"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[dointr]"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[dointr]" />
+                    <inputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].Columns[doterm]"
+                      cachedDataType="r8"
+                      cachedName="doterm"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[doterm]"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[doterm]" />
+                    <inputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].Columns[usertype]"
+                      cachedDataType="r8"
+                      cachedName="usertype"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[usertype]"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[usertype]" />
+                    <inputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].Columns[oa11cd]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="oa11cd"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[oa11cd]"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[oa11cd]" />
+                    <inputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].Columns[lsoa11cd]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="lsoa11cd"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[lsoa11cd]"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[lsoa11cd]" />
+                    <inputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].Columns[msoa11cd]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="msoa11cd"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[msoa11cd]"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[msoa11cd]" />
+                    <inputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].Columns[ladcd]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ladcd"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[ladcd]"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[ladcd]" />
+                    <inputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].Columns[lsoa11nm]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="lsoa11nm"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[lsoa11nm]"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[lsoa11nm]" />
+                    <inputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].Columns[msoa11nm]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="msoa11nm"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[msoa11nm]"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[msoa11nm]" />
+                    <inputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].Columns[ladnm]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ladnm"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[ladnm]"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[ladnm]" />
+                    <inputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].Columns[ladnmw]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ladnmw"
+                      externalMetadataColumnId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[ladnmw]"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output].Columns[ladnmw]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[pcd7]"
+                      dataType="wstr"
+                      length="255"
+                      name="pcd7" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[pcd8]"
+                      dataType="wstr"
+                      length="255"
+                      name="pcd8" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[pcds]"
+                      dataType="wstr"
+                      length="255"
+                      name="pcds" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[dointr]"
+                      dataType="r8"
+                      name="dointr" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[doterm]"
+                      dataType="r8"
+                      name="doterm" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[usertype]"
+                      dataType="r8"
+                      name="usertype" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[oa11cd]"
+                      dataType="wstr"
+                      length="255"
+                      name="oa11cd" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[lsoa11cd]"
+                      dataType="wstr"
+                      length="255"
+                      name="lsoa11cd" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[msoa11cd]"
+                      dataType="wstr"
+                      length="255"
+                      name="msoa11cd" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[ladcd]"
+                      dataType="wstr"
+                      length="255"
+                      name="ladcd" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[lsoa11nm]"
+                      dataType="wstr"
+                      length="255"
+                      name="lsoa11nm" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[msoa11nm]"
+                      dataType="wstr"
+                      length="255"
+                      name="msoa11nm" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[ladnm]"
+                      dataType="wstr"
+                      length="255"
+                      name="ladnm" />
+                    <externalMetadataColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input].ExternalColumns[ladnmw]"
+                      dataType="wstr"
+                      length="255"
+                      name="ladnmw" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import data from PCD_LSOA to Stage.Paths[OLE DB Source Output]"
+              endId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Import data from PCD_LSOA to Stage\PCD_LSOA.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Set CET"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{b6e340c9-388f-4753-9917-e7b6879a46f5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Set CET"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7F9B43B4-6C5F-45E8-831B-E2959CD08B19}"
+          SQLTask:SqlStatementSource="update Data_flow set CET=getdate() where name='PCD_LSOA'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\set LSET"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{427611d3-91b9-41a4-af63-8ffbcb9a6898}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="set LSET"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7F9B43B4-6C5F-45E8-831B-E2959CD08B19}"
+          SQLTask:SqlStatementSource="update Data_Flow set LSET=getdate() where name='PCD_LSOA'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate table  PCD_LSOA_Stage"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{b4e3f63e-87dc-45b8-b783-9f36116ba4da}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate table  PCD_LSOA_Stage"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{1B5B019B-CA67-4DDF-9E21-F409C85E683B}"
+          SQLTask:SqlStatementSource="truncate table PCD_LSOA_Stage" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{2a50d5ad-2853-4745-846b-ebb5a530911e}"
+      DTS:From="Package\Set CET"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Truncate table  PCD_LSOA_Stage" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{8b62c75d-387c-4c45-be23-0e3f5fb7cb55}"
+      DTS:From="Package\Truncate table  PCD_LSOA_Stage"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Get LSET" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{dc9b40b8-7e7e-4370-9142-1d4696c71b62}"
+      DTS:From="Package\Get LSET"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Import data from PCD_LSOA to Stage" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{c7d5cafc-2cfd-4511-9749-8b88526bb34a}"
+      DTS:From="Package\Import data from PCD_LSOA to Stage"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\set LSET" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="121.6,41.6"
+          Id="Package\Get LSET"
+          TopLeft="543.571436806601,63.9294132447156" />
+        <NodeLayout
+          Size="256,41.6"
+          Id="Package\Import data from PCD_LSOA to Stage"
+          TopLeft="730.485725513283,62.4000014585599" />
+        <NodeLayout
+          Size="115.2,41.6"
+          Id="Package\Set CET"
+          TopLeft="60,60" />
+        <NodeLayout
+          Size="119.2,41.6"
+          Id="Package\set LSET"
+          TopLeft="1068.48470887211,62.8096653298519" />
+        <NodeLayout
+          Size="236,41.6"
+          Id="Package\Truncate table  PCD_LSOA_Stage"
+          TopLeft="233.571431527333,63.7176456860596" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="175.2,82.6588228430298">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58.371431527333,0"
+              Start="0,0"
+              End="50.871431527333,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="50.871431527333,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="469.571431527333,84.6235294653876">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74.0000052792681,0"
+              Start="0,0"
+              End="66.5000052792681,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="66.5000052792681,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="665.171436806601,83.9647073516377">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="65.314288706682,0"
+              Start="0,0"
+              End="57.814288706682,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="57.814288706682,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="986.485725513283,83.4048333942059">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="81.9989833588269,0"
+              Start="0,0"
+              End="74.4989833588269,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="74.4989833588269,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Import data from PCD_LSOA to Stage">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="128.8,41.6"
+          Id="Package\Import data from PCD_LSOA to Stage\PCD_LSOA"
+          TopLeft="297.14286220317,24.4705885784849" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage"
+          TopLeft="273.571433230322,141.470590219366" />
+        <EdgeLayout
+          Id="Package\Import data from PCD_LSOA to Stage.Paths[OLE DB Source Output]"
+          TopLeft="357.957147716746,66.0705885784849">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75.4000016408808"
+              Start="0,0"
+              End="0,67.9000016408808">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.9000016408808" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import data from PCD_LSOA to Stage\PCD_LSOA">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import data from PCD_LSOA to Stage\PCD_LSOA_Stage">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

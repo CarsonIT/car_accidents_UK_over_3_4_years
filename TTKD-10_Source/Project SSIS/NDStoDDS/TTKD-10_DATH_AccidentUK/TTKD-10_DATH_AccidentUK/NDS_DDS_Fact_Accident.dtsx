@@ -1,0 +1,3066 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/26/2021 6:25:21 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="TTKD10"
+  DTS:CreatorName="TTKD10\ASUS"
+  DTS:DTSID="{9DD8C6C2-DB33-4CE2-96CC-002C772C6EE5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{46F84DA7-65D8-47D1-B79E-A547E1283078}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B052C9D5-94E4-4D85-9222-9F7F615F6447}"
+      DTS:ObjectName="LocalHost.UK_Accident_DDS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=UK_Accident_DDS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{505D5033-1893-4D57-BF7F-A06A25B38558}"
+      DTS:ObjectName="LocalHost.UK_Accident_DDS 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=UK_Accident_DDS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.UK_Accident_NDS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{51694DFC-3C9F-4F0E-9599-DE1C46496F07}"
+      DTS:ObjectName="LocalHost.UK_Accident_NDS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=UK_Accident_NDS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.UK_Accident_NDS 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D42691CD-5F1E-4E3E-A1A9-41A22F0A9D96}"
+      DTS:ObjectName="LocalHost.UK_Accident_NDS 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=UK_Accident_NDS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.UK_Accident_NDS 2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C1A73F3D-31B2-40D2-88CE-BC9EE6AF4BE0}"
+      DTS:ObjectName="LocalHost.UK_Accident_NDS 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=UK_Accident_NDS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Fact_Accidents NDS_DDS"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2a3d9d47-7fc9-48c4-b56f-af1500911d87}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Fact_Accidents NDS_DDS"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Chuyển đổi dữ liệu ngày tháng năm"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Inputs[Derived Column Input].Columns[Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Date"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Outputs[Derived Column Output].Columns[Day]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Outputs[Derived Column Output].Columns[Day]"
+                      name="Day"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DAY](#{Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[Date]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DAY(Date)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Outputs[Derived Column Output].Columns[Month]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Outputs[Derived Column Output].Columns[Month]"
+                      name="Month"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[MONTH](#{Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[Date]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">MONTH(Date)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Outputs[Derived Column Output].Columns[Year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Outputs[Derived Column Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[YEAR](#{Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[Date]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">YEAR(Date)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Fact_Accidents NDS"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[KhachHang]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select  ase.ID_AccidentSeverity as AccidentSeverity_NK,Cast(SUBSTRING(Time,1,2)as int) as Hour, a.Date, rt.ID_RoadType as RoadType_NK,
+l.ID_LocalAuthorityDistrict as LocalAuthorityDistrict_NK, a.Name_Built_up_Road, p.ID_Postcode as PostCode_NK,
+u.ID_UrbanorRuralArea as UrbanOrRural_NK ,COUNT(a.ID) as NumberofAccidents
+from   Accident a, AccidentSeverity ase, RoadType rt, LocalAuthorityDistrict l, Postcodes p, Urban_or_Rural_Area u
+where a.UrbanRural_SK= u.ID and a.PostCode_SK= p.ID and a.Accident_Severity_SK=ase.ID and a.Road_Type_SK=rt.ID and a.Local_Authority_District_SK=l.ID 
+Group By u.ID_UrbanorRuralArea, ase.ID_AccidentSeverity, a.Time, a.Date, rt.ID_RoadType, l.ID_LocalAuthorityDistrict, a.Name_Built_up_Road,p.ID_Postcode</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0:Input",{65D63447-0900-432C-9EB8-5CB75B45289E};"Parameter1:Input",{BFF77B64-674D-4EB6-9936-173BFA892A12};"Parameter2:Input",{65D63447-0900-432C-9EB8-5CB75B45289E};"Parameter3:Input",{BFF77B64-674D-4EB6-9936-173BFA892A12};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_NDS 2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_NDS 2]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[AccidentSeverity_NK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].ExternalColumns[AccidentSeverity_NK]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[AccidentSeverity_NK]"
+                      name="AccidentSeverity_NK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[RoadType_NK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].ExternalColumns[RoadType_NK]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[RoadType_NK]"
+                      name="RoadType_NK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[LocalAuthorityDistrict_NK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].ExternalColumns[LocalAuthorityDistrict_NK]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[LocalAuthorityDistrict_NK]"
+                      name="LocalAuthorityDistrict_NK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[Name_Built_up_Road]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].ExternalColumns[Name_Built_up_Road]"
+                      length="50"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[Name_Built_up_Road]"
+                      name="Name_Built_up_Road"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[NumberofAccidents]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].ExternalColumns[NumberofAccidents]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[NumberofAccidents]"
+                      name="NumberofAccidents"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[PostCode_NK]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].ExternalColumns[PostCode_NK]"
+                      length="10"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[PostCode_NK]"
+                      name="PostCode_NK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[UrbanOrRural_NK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].ExternalColumns[UrbanOrRural_NK]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[UrbanOrRural_NK]"
+                      name="UrbanOrRural_NK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[Hour]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].ExternalColumns[Hour]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[Hour]"
+                      name="Hour"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].ExternalColumns[AccidentSeverity_NK]"
+                      dataType="i4"
+                      name="AccidentSeverity_NK" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      dataType="dbDate"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].ExternalColumns[RoadType_NK]"
+                      dataType="i4"
+                      name="RoadType_NK" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].ExternalColumns[LocalAuthorityDistrict_NK]"
+                      dataType="i4"
+                      name="LocalAuthorityDistrict_NK" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].ExternalColumns[Name_Built_up_Road]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Name_Built_up_Road" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].ExternalColumns[NumberofAccidents]"
+                      dataType="i4"
+                      name="NumberofAccidents" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].ExternalColumns[PostCode_NK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PostCode_NK" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].ExternalColumns[UrbanOrRural_NK]"
+                      dataType="i4"
+                      name="UrbanOrRural_NK" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].ExternalColumns[Hour]"
+                      dataType="i4"
+                      name="Hour" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[PostCode_NK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[PostCode_NK]"
+                      name="PostCode_NK" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[Hour]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[Hour]"
+                      name="Hour" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[AccidentSeverity_NK]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[AccidentSeverity_NK]"
+                      name="AccidentSeverity_NK" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      dataType="dbDate"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[RoadType_NK]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[RoadType_NK]"
+                      name="RoadType_NK" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[LocalAuthorityDistrict_NK]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[LocalAuthorityDistrict_NK]"
+                      name="LocalAuthorityDistrict_NK" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[Name_Built_up_Road]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[Name_Built_up_Road]"
+                      name="Name_Built_up_Road" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[UrbanOrRural_NK]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[UrbanOrRural_NK]"
+                      name="UrbanOrRural_NK" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[NumberofAccidents]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[NumberofAccidents]"
+                      name="NumberofAccidents" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert dữ liệu"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fact_Accidents]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].Columns[NumberofAccidents]"
+                      cachedDataType="i4"
+                      cachedName="NumberofAccidents"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[NumberofAccidents]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[NumberofAccidents]" />
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].Columns[Time_SK]"
+                      cachedDataType="i4"
+                      cachedName="Time_SK"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[Time_SK]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Outputs[Lookup Match Output].Columns[Time_SK]" />
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].Columns[AccidentSeverity_SK]"
+                      cachedDataType="i4"
+                      cachedName="AccidentSeverity_SK"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[AccidentSeverity_SK]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Outputs[Lookup Match Output].Columns[AccidentSeverity_SK]" />
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].Columns[RoadType_SK]"
+                      cachedDataType="i4"
+                      cachedName="RoadType_SK"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[RoadType_SK]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Outputs[Lookup Match Output].Columns[RoadType_SK]" />
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].Columns[LocalAuthorityDistrict_SK]"
+                      cachedDataType="i4"
+                      cachedName="LocalAuthorityDistrict_SK"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[LocalAuthorityDistrict_SK]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Outputs[Lookup Match Output].Columns[LocalAuthorityDistrict_SK]" />
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].Columns[BuiltUpRoad_SK]"
+                      cachedDataType="i4"
+                      cachedName="BuiltUpRoad_SK"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[BuiltUpRoad_SK]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Outputs[Lookup Match Output].Columns[BuiltUpRoad_SK]" />
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].Columns[Geography_SK]"
+                      cachedDataType="i4"
+                      cachedName="Geography_SK"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[Geography_SK]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Outputs[Lookup Match Output].Columns[Geography_SK]" />
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].Columns[Date_SK]"
+                      cachedDataType="i4"
+                      cachedName="Date_SK"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[Date_SK]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Outputs[Lookup Match Output].Columns[Date_SK]" />
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].Columns[UrbanOrRural_SK]"
+                      cachedDataType="i4"
+                      cachedName="UrbanOrRural_SK"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[UrbanOrRural_SK]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Outputs[Lookup Match Output].Columns[UrbanOrRural_SK]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[AccidentSeverity_SK]"
+                      dataType="i4"
+                      name="AccidentSeverity_SK" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[Time_SK]"
+                      dataType="i4"
+                      name="Time_SK" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[RoadType_SK]"
+                      dataType="i4"
+                      name="RoadType_SK" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[LocalAuthorityDistrict_SK]"
+                      dataType="i4"
+                      name="LocalAuthorityDistrict_SK" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[BuiltUpRoad_SK]"
+                      dataType="i4"
+                      name="BuiltUpRoad_SK" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[Geography_SK]"
+                      dataType="i4"
+                      name="Geography_SK" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[NumberofAccidents]"
+                      dataType="i4"
+                      name="NumberofAccidents" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[Date_SK]"
+                      dataType="i4"
+                      name="Date_SK" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[UrbanOrRural_SK]"
+                      dataType="i4"
+                      name="UrbanOrRural_SK" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Accidents NDS_DDS\Lay Time_SK"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lay Time_SK"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Time]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Time]) [refTable]
+where [refTable].[Hour] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Time_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Hour" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Session" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[Hour]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Inputs[Lookup Input].Columns[Hour]"
+                      cachedDataType="i4"
+                      cachedName="Hour"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[Hour]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Hour</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Outputs[Lookup Match Output].Columns[Time_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Outputs[Lookup Match Output].Columns[Time_SK]"
+                      name="Time_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Time_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lấy AccidentSeverity_SK"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[AccidentSeverity]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[AccidentSeverity]) [refTable]
+where [refTable].[AccidentSeverity_NK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="AccidentSeverity_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AccidentSeverity_NK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NameSeverity" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[AccidentSeverity_NK]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Inputs[Lookup Input].Columns[AccidentSeverity_NK]"
+                      cachedDataType="i4"
+                      cachedName="AccidentSeverity_NK"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[AccidentSeverity_NK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">AccidentSeverity_NK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Outputs[Lookup Match Output].Columns[AccidentSeverity_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Outputs[Lookup Match Output].Columns[AccidentSeverity_SK]"
+                      name="AccidentSeverity_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">AccidentSeverity_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lấy BuildUpRoad_SK"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Built_up_Road_Type]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Built_up_Road_Type]) [refTable]
+where [refTable].[Name_Built_up_Road_Type] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="BuiltUpRoad_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name_Built_up_Road_Type" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[Name_Built_up_Road]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Inputs[Lookup Input].Columns[Name_Built_up_Road]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Name_Built_up_Road"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[Name_Built_up_Road]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Name_Built_up_Road_Type</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Outputs[Lookup Match Output].Columns[BuiltUpRoad_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Outputs[Lookup Match Output].Columns[BuiltUpRoad_SK]"
+                      name="BuiltUpRoad_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">BuiltUpRoad_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lấy Date_SK"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Date]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Date]) [refTable]
+where [refTable].[Day] = ? and [refTable].[Month] = ? and [refTable].[Year] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Date_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Day" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Month" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Quarter" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Year" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Outputs[Derived Column Output].Columns[Day]};#{Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Outputs[Derived Column Output].Columns[Month]};#{Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Outputs[Derived Column Output].Columns[Year]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Inputs[Lookup Input].Columns[Day]"
+                      cachedDataType="i4"
+                      cachedName="Day"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Outputs[Derived Column Output].Columns[Day]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Day</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Inputs[Lookup Input].Columns[Month]"
+                      cachedDataType="i4"
+                      cachedName="Month"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Outputs[Derived Column Output].Columns[Month]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Month</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Inputs[Lookup Input].Columns[Year]"
+                      cachedDataType="i4"
+                      cachedName="Year"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Outputs[Derived Column Output].Columns[Year]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Year</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Outputs[Lookup Match Output].Columns[Date_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Outputs[Lookup Match Output].Columns[Date_SK]"
+                      name="Date_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Date_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lấy Geography_SK"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Geography]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Geography]) [refTable]
+where [refTable].[Postcode_NK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Geography_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Postcode_NK" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="City" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="County" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="RegionName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CountryName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[PostCode_NK]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Inputs[Lookup Input].Columns[PostCode_NK]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="PostCode_NK"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[PostCode_NK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Postcode_NK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Outputs[Lookup Match Output].Columns[Geography_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Outputs[Lookup Match Output].Columns[Geography_SK]"
+                      name="Geography_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Geography_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lấy LocalAuthorityDistrict_SK"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[LocalAuthorityDistrict]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[LocalAuthorityDistrict]) [refTable]
+where [refTable].[LocalAuthorityDistrict_NK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="LocalAuthorityDistrict_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LocalAuthorityDistrict_NK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NameLocalAuthorityDistrict" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IDUrbanOrRuralArea" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NameUrbanOrRuralArea" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[LocalAuthorityDistrict_NK]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Inputs[Lookup Input].Columns[LocalAuthorityDistrict_NK]"
+                      cachedDataType="i4"
+                      cachedName="LocalAuthorityDistrict_NK"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[LocalAuthorityDistrict_NK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">LocalAuthorityDistrict_NK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Outputs[Lookup Match Output].Columns[LocalAuthorityDistrict_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Outputs[Lookup Match Output].Columns[LocalAuthorityDistrict_SK]"
+                      name="LocalAuthorityDistrict_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">LocalAuthorityDistrict_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lấy RoadType_SK"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[RoadType]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[RoadType]) [refTable]
+where [refTable].[RoadType_NK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name=" RoadType_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RoadType_NK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name_RoadType" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[RoadType_NK]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Inputs[Lookup Input].Columns[RoadType_NK]"
+                      cachedDataType="i4"
+                      cachedName="RoadType_NK"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[RoadType_NK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">RoadType_NK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Outputs[Lookup Match Output].Columns[RoadType_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Outputs[Lookup Match Output].Columns[RoadType_SK]"
+                      name="RoadType_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn"> RoadType_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lấy UrbanOrRural_SK"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[UrbanOrRural]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[UrbanOrRural]) [refTable]
+where [refTable].[UrbanOrRural_NK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="UrbanOrRural_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UrbanOrRural_NK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NameUrbanOrRuralArea" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[UrbanOrRural_NK]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Inputs[Lookup Input].Columns[UrbanOrRural_NK]"
+                      cachedDataType="i4"
+                      cachedName="UrbanOrRural_NK"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[UrbanOrRural_NK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">UrbanOrRural_NK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Outputs[Lookup Match Output].Columns[UrbanOrRural_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Outputs[Lookup Match Output].Columns[UrbanOrRural_SK]"
+                      name="UrbanOrRural_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">UrbanOrRural_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Fact_Accidents]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Fact_Accidents]) [refTable]
+where [refTable].[Time_SK] = ? and [refTable].[Date_SK] = ? and [refTable].[AccidentSeverity_SK] = ? and [refTable].[RoadType_SK] = ? and [refTable].[LocalAuthorityDistrict_SK] = ? and [refTable].[BuiltUpRoad_SK] = ? and [refTable].[Geography_SK] = ? and [refTable].[UrbanOrRural_SK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="AccidentSeverity_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Time_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RoadType_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LocalAuthorityDistrict_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="BuiltUpRoad_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Geography_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UrbanOrRural_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NumberofAccidents" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Fact_Accidents NDS_DDS\273:invalid};#{Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Outputs[Lookup Match Output].Columns[Date_SK]};#{Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Outputs[Lookup Match Output].Columns[AccidentSeverity_SK]};#{Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Outputs[Lookup Match Output].Columns[RoadType_SK]};#{Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Outputs[Lookup Match Output].Columns[LocalAuthorityDistrict_SK]};#{Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Outputs[Lookup Match Output].Columns[BuiltUpRoad_SK]};#{Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Outputs[Lookup Match Output].Columns[Geography_SK]};#{Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Outputs[Lookup Match Output].Columns[UrbanOrRural_SK]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Inputs[Lookup Input].Columns[Time_SK]"
+                      cachedDataType="i4"
+                      cachedName="Time_SK"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Outputs[Lookup Match Output].Columns[Time_SK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Time_SK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Inputs[Lookup Input].Columns[Date_SK]"
+                      cachedDataType="i4"
+                      cachedName="Date_SK"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Outputs[Lookup Match Output].Columns[Date_SK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Date_SK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Inputs[Lookup Input].Columns[AccidentSeverity_SK]"
+                      cachedDataType="i4"
+                      cachedName="AccidentSeverity_SK"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Outputs[Lookup Match Output].Columns[AccidentSeverity_SK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">AccidentSeverity_SK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Inputs[Lookup Input].Columns[RoadType_SK]"
+                      cachedDataType="i4"
+                      cachedName="RoadType_SK"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Outputs[Lookup Match Output].Columns[RoadType_SK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">RoadType_SK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Inputs[Lookup Input].Columns[LocalAuthorityDistrict_SK]"
+                      cachedDataType="i4"
+                      cachedName="LocalAuthorityDistrict_SK"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Outputs[Lookup Match Output].Columns[LocalAuthorityDistrict_SK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">LocalAuthorityDistrict_SK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Inputs[Lookup Input].Columns[BuiltUpRoad_SK]"
+                      cachedDataType="i4"
+                      cachedName="BuiltUpRoad_SK"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Outputs[Lookup Match Output].Columns[BuiltUpRoad_SK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">BuiltUpRoad_SK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Inputs[Lookup Input].Columns[Geography_SK]"
+                      cachedDataType="i4"
+                      cachedName="Geography_SK"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Outputs[Lookup Match Output].Columns[Geography_SK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Geography_SK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Inputs[Lookup Input].Columns[UrbanOrRural_SK]"
+                      cachedDataType="i4"
+                      cachedName="UrbanOrRural_SK"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Outputs[Lookup Match Output].Columns[UrbanOrRural_SK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">UrbanOrRural_SK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="RedirectRow"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Accidents NDS_DDS\Update du lieu"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Update du lieu"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">update Fact_Accidents set NumberofAccidents=? where 
+AccidentSeverity_SK=? and  Time_SK =? and Date_SK=? and RoadType_SK=? and LocalAuthorityDistrict_SK=? and BuiltUpRoad_SK=? and Geography_SK=? and UrbanOrRural_SK=?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].Columns[NumberofAccidents]"
+                      cachedDataType="i4"
+                      cachedName="NumberofAccidents"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output].Columns[NumberofAccidents]" />
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].Columns[AccidentSeverity_SK]"
+                      cachedDataType="i4"
+                      cachedName="AccidentSeverity_SK"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Outputs[Lookup Match Output].Columns[AccidentSeverity_SK]" />
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].Columns[Time_SK]"
+                      cachedDataType="i4"
+                      cachedName="Time_SK"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Outputs[Lookup Match Output].Columns[Time_SK]" />
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].Columns[Date_SK]"
+                      cachedDataType="i4"
+                      cachedName="Date_SK"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Outputs[Lookup Match Output].Columns[Date_SK]" />
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].Columns[RoadType_SK]"
+                      cachedDataType="i4"
+                      cachedName="RoadType_SK"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Outputs[Lookup Match Output].Columns[RoadType_SK]" />
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].Columns[LocalAuthorityDistrict_SK]"
+                      cachedDataType="i4"
+                      cachedName="LocalAuthorityDistrict_SK"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Outputs[Lookup Match Output].Columns[LocalAuthorityDistrict_SK]" />
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].Columns[BuiltUpRoad_SK]"
+                      cachedDataType="i4"
+                      cachedName="BuiltUpRoad_SK"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Outputs[Lookup Match Output].Columns[BuiltUpRoad_SK]" />
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].Columns[Geography_SK]"
+                      cachedDataType="i4"
+                      cachedName="Geography_SK"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Outputs[Lookup Match Output].Columns[Geography_SK]" />
+                    <inputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].Columns[UrbanOrRural_SK]"
+                      cachedDataType="i4"
+                      cachedName="UrbanOrRural_SK"
+                      externalMetadataColumnId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Outputs[Lookup Match Output].Columns[UrbanOrRural_SK]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="i4"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="i4"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="i4"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      dataType="i4"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      dataType="i4"
+                      name="Param_7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      dataType="i4"
+                      name="Param_8">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Update du lieu.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Accidents NDS_DDS\Update du lieu.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Accidents NDS_DDS\Update du lieu.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Fact_Accidents NDS_DDS.Paths[Derived Column Output]"
+              endId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Fact_Accidents NDS_DDS.Paths[Lookup Error Output]"
+              endId="Package\Fact_Accidents NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input]"
+              name="Lookup Error Output"
+              startId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Outputs[Lookup Error Output]" />
+            <path
+              refId="Package\Fact_Accidents NDS_DDS.Paths[Lookup Match Output]"
+              endId="Package\Fact_Accidents NDS_DDS\Update du lieu.Inputs[OLE DB Command Input]"
+              name="Lookup Match Output"
+              startId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Fact_Accidents NDS_DDS.Paths[Lookup Match Output1]"
+              endId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Fact_Accidents NDS_DDS.Paths[Lookup Match Output2]"
+              endId="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Fact_Accidents NDS_DDS.Paths[Lookup Match Output3]"
+              endId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Fact_Accidents NDS_DDS.Paths[Lookup Match Output4]"
+              endId="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Fact_Accidents NDS_DDS.Paths[Lookup Match Output5]"
+              endId="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Fact_Accidents NDS_DDS.Paths[Lookup Match Output6]"
+              endId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Fact_Accidents NDS_DDS.Paths[Lookup Match Output7]"
+              endId="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Fact_Accidents NDS_DDS.Paths[Lookup Match Output8]"
+              endId="Package\Fact_Accidents NDS_DDS\Lấy Date_SK.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Fact_Accidents NDS_DDS\Lay Time_SK.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Fact_Accidents NDS_DDS.Paths[OLE DB Source Output]"
+              endId="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="201.6,41.6"
+          Id="Package\Fact_Accidents NDS_DDS"
+          TopLeft="60.0000000000001,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Fact_Accidents NDS_DDS">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK"
+          TopLeft="127.43332952526,632.933327416843" />
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\Fact_Accidents NDS_DDS\Insert dữ liệu"
+          TopLeft="271.76666669978,874.266663553447" />
+        <NodeLayout
+          Size="195.2,41.6"
+          Id="Package\Fact_Accidents NDS_DDS\Lấy AccidentSeverity_SK"
+          TopLeft="111.299997516473,322.466665330463" />
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK"
+          TopLeft="121.666661832068,702.466671054098" />
+        <NodeLayout
+          Size="215.2,41.6"
+          Id="Package\Fact_Accidents NDS_DDS\Lấy LocalAuthorityDistrict_SK"
+          TopLeft="101.533329425918,472.133337066438" />
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS"
+          TopLeft="129.200000496705,15.8999997313807" />
+        <NodeLayout
+          Size="145.6,41.6"
+          Id="Package\Fact_Accidents NDS_DDS\Update du lieu"
+          TopLeft="41.2666673951681,848.53332993772" />
+        <NodeLayout
+          Size="179.2,41.6"
+          Id="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK"
+          TopLeft="125.76666292482,551.933327396179" />
+        <NodeLayout
+          Size="324.8,41.6"
+          Id="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident"
+          TopLeft="48.2666660043932,785.199996859232" />
+        <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\Fact_Accidents NDS_DDS\Lấy RoadType_SK"
+          TopLeft="120.799995231629,400.866666673554" />
+        <NodeLayout
+          Size="241.6,41.6"
+          Id="Package\Fact_Accidents NDS_DDS\Chuyển đổi dữ liệu ngày tháng năm"
+          TopLeft="98.3333294259179,96.2000007645285" />
+        <NodeLayout
+          Size="139.2,41.6"
+          Id="Package\Fact_Accidents NDS_DDS\Lấy Date_SK"
+          TopLeft="142.499994337559,237.666668161286" />
+        <EdgeLayout
+          Id="Package\Fact_Accidents NDS_DDS.Paths[OLE DB Source Output]"
+          TopLeft="217.766664961311,57.4999997313807">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.7000010331478"
+              Start="0,0"
+              End="0,31.2000010331478">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.2000010331478" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact_Accidents NDS_DDS.Paths[Lookup Match Output7]"
+          TopLeft="211.766663918231,744.066671054098">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.1333258051338"
+              Start="0,0"
+              End="0,33.6333258051338">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.6333258051338" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,11.0119754025669,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact_Accidents NDS_DDS.Paths[Lookup Match Output6]"
+          TopLeft="212.349995678664,674.533327416843">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.9333436372559"
+              Start="0,0"
+              End="0,20.4333436372559">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.4333436372559" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,4.41198431862795,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact_Accidents NDS_DDS.Paths[Lookup Match Output5]"
+          TopLeft="210.499995927016,279.266668161286">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.1999971691769"
+              Start="0,0"
+              End="0,35.6999971691769">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.6999971691769" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,12.0453110845885,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact_Accidents NDS_DDS.Paths[Lookup Match Output4]"
+          TopLeft="206.366662328773,442.466666673554">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.6666703928842"
+              Start="0,0"
+              End="0,22.1666703928842">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.1666703928842" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,5.2786476964421,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact_Accidents NDS_DDS.Paths[Lookup Match Output3]"
+          TopLeft="206.249996374051,364.066665330463">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.8000013430915"
+              Start="0,0"
+              End="0,29.3000013430915">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.3000013430915" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,8.84531317154575,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact_Accidents NDS_DDS.Paths[Lookup Match Output2]"
+          TopLeft="212.249996175369,513.733337066438">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.1999903297409"
+              Start="0,0"
+              End="0,30.6999903297409">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.6999903297409" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,9.54530766487045,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact_Accidents NDS_DDS.Paths[Lookup Match Output1]"
+          TopLeft="213.59999622504,593.533327396179">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.4000000206637"
+              Start="0,0"
+              End="0,31.9000000206637">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.9000000206637" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,10.1453125103319,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact_Accidents NDS_DDS.Paths[Lookup Match Output]"
+          TopLeft="157.866666004393,826.799996859232">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="29.0000013907749,42.533333078488"
+              Start="0,0"
+              End="21.5000013907749,42.533333078488">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.533333078488" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.533333078488"
+                    Point2="0,42.533333078488"
+                    Point3="4,42.533333078488" />
+                  <mssgle:LineSegment
+                    End="21.5000013907749,42.533333078488" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-35.4413860233626,47.533333078488,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact_Accidents NDS_DDS.Paths[Lookup Error Output]"
+          TopLeft="263.466666004393,826.799996859232">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="79.1000006953867,47.466666694215"
+              Start="0,0"
+              End="79.1000006953867,39.966666694215">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.1262745209043" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.1262745209043"
+                    Point2="0,19.1262745209043"
+                    Point3="4,19.1262745209043" />
+                  <mssgle:LineSegment
+                    End="75.1000006953867,19.1262745209043" />
+                  <mssgle:CubicBezierSegment
+                    Point1="75.1000006953867,19.1262745209043"
+                    Point2="79.1000006953867,19.1262745209043"
+                    Point3="79.1000006953867,23.1262745209043" />
+                  <mssgle:LineSegment
+                    End="79.1000006953867,39.966666694215" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-6.31638637105666,24.1262745209043,91.7327734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\Fact_Accidents NDS_DDS\Lay Time_SK"
+          TopLeft="140.83332773712,160.333334607548" />
+        <EdgeLayout
+          Id="Package\Fact_Accidents NDS_DDS.Paths[Derived Column Output]"
+          TopLeft="215.183328581519,137.800000764529">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,22.5333338430197"
+              Start="0,0"
+              End="0,15.0333338430197">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.0333338430197" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact_Accidents NDS_DDS.Paths[Lookup Match Output8]"
+          TopLeft="211.666661037339,201.933334607548">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.7333335537378"
+              Start="0,0"
+              End="0,28.2333335537378">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.2333335537378" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,8.31197927686888,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact_Accidents NDS_DDS\Lấy Geography_SK">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Geography]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact_Accidents NDS_DDS\Insert dữ liệu">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact_Accidents NDS_DDS\Lấy UrbanOrRural_SK">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[UrbanOrRural]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact_Accidents NDS_DDS\Fact_Accidents NDS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact_Accidents NDS_DDS\Lấy BuildUpRoad_SK">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Built_up_Road_Type]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact_Accidents NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Accident">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Fact_Accidents]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact_Accidents NDS_DDS\Lấy Date_SK">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Date]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact_Accidents NDS_DDS\Lay Time_SK">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Time]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

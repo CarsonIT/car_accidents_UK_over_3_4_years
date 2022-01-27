@@ -1,0 +1,1256 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/1/2022 4:20:47 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="TTKD10"
+  DTS:CreatorName="TTKD10\ASUS"
+  DTS:DTSID="{C7A8193F-440F-4BBF-824E-CCEDBDAC3B62}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{77E71C29-6346-46A0-AFA7-3B035963F106}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B052C9D5-94E4-4D85-9222-9F7F615F6447}"
+      DTS:ObjectName="LocalHost.UK_Accident_DDS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=UK_Accident_DDS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.UK_Accident_NDS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{51694DFC-3C9F-4F0E-9599-DE1C46496F07}"
+      DTS:ObjectName="LocalHost.UK_Accident_NDS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=UK_Accident_NDS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Fact_Vehicle NDS_DDS"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{bef1b4ec-ca88-4c9e-9d5a-16ddb63a19de}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Fact_Vehicle NDS_DDS"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert dữ liệu"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fact_Vehicle]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].Columns[NumberofVehicle]"
+                      cachedDataType="i4"
+                      cachedName="NumberofVehicle"
+                      externalMetadataColumnId="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[NumberofVehicle]"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output].Columns[NumberofVehicle]" />
+                    <inputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].Columns[Vehicle_Type_SK]"
+                      cachedDataType="i4"
+                      cachedName="Vehicle_Type_SK"
+                      externalMetadataColumnId="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle_Type_SK]"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Outputs[Lookup Match Output].Columns[Vehicle_Type_SK]" />
+                    <inputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].Columns[Journey_Purpose_SK]"
+                      cachedDataType="i4"
+                      cachedName="Journey_Purpose_SK"
+                      externalMetadataColumnId="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[Journey_Purpose_SK]"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Outputs[Lookup Match Output].Columns[Journey_Purpose_SK]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle_Type_SK]"
+                      dataType="i4"
+                      name="Vehicle_Type_SK" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[Journey_Purpose_SK]"
+                      dataType="i4"
+                      name="Journey_Purpose_SK" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[NumberofVehicle]"
+                      dataType="i4"
+                      name="NumberofVehicle" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lấy Journey_Purpose_SK"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Journey_Purpose]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Journey_Purpose]) [refTable]
+where [refTable].[Journey_Purpose_NK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Journey_Purpose_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Journey_Purpose_NK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NameJourneyPurpose" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output].Columns[Journey_Purpose_NK]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Inputs[Lookup Input].Columns[Journey_Purpose_NK]"
+                      cachedDataType="i4"
+                      cachedName="Journey_Purpose_NK"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output].Columns[Journey_Purpose_NK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Journey_Purpose_NK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Outputs[Lookup Match Output].Columns[Journey_Purpose_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Outputs[Lookup Match Output].Columns[Journey_Purpose_SK]"
+                      name="Journey_Purpose_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Journey_Purpose_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lấy Vehicle_Type_SK"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Vehicle_Type]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Vehicle_Type]) [refTable]
+where [refTable].[Vehicle_Type_NK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Vehicle_Type_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Vehicle_Type_NK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NameVehicleType" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output].Columns[Vehicle_Type_NK]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Inputs[Lookup Input].Columns[Vehicle_Type_NK]"
+                      cachedDataType="i4"
+                      cachedName="Vehicle_Type_NK"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output].Columns[Vehicle_Type_NK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Vehicle_Type_NK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Outputs[Lookup Match Output].Columns[Vehicle_Type_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Outputs[Lookup Match Output].Columns[Vehicle_Type_SK]"
+                      name="Vehicle_Type_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Vehicle_Type_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Fact_Vehicle]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Fact_Vehicle]) [refTable]
+where [refTable].[Vehicle_Type_SK] = ? and [refTable].[Journey_Purpose_SK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Vehicle_Type_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Journey_Purpose_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NumberofVehicle" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Outputs[Lookup Match Output].Columns[Vehicle_Type_SK]};#{Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Outputs[Lookup Match Output].Columns[Journey_Purpose_SK]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle.Inputs[Lookup Input].Columns[Vehicle_Type_SK]"
+                      cachedDataType="i4"
+                      cachedName="Vehicle_Type_SK"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Outputs[Lookup Match Output].Columns[Vehicle_Type_SK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Vehicle_Type_SK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle.Inputs[Lookup Input].Columns[Journey_Purpose_SK]"
+                      cachedDataType="i4"
+                      cachedName="Journey_Purpose_SK"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Outputs[Lookup Match Output].Columns[Journey_Purpose_SK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Journey_Purpose_SK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="RedirectRow"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Vehicle NDS_DDS\Update du lieu"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Update du lieu"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">update Fact_Vehicle set NumberofVehicle=? where 
+Vehicle_Type_SK=? and Journey_Purpose_SK=?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].Columns[Vehicle_Type_SK]"
+                      cachedDataType="i4"
+                      cachedName="Vehicle_Type_SK"
+                      externalMetadataColumnId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Outputs[Lookup Match Output].Columns[Vehicle_Type_SK]" />
+                    <inputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].Columns[Journey_Purpose_SK]"
+                      cachedDataType="i4"
+                      cachedName="Journey_Purpose_SK"
+                      externalMetadataColumnId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Outputs[Lookup Match Output].Columns[Journey_Purpose_SK]" />
+                    <inputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].Columns[NumberofVehicle]"
+                      cachedDataType="i4"
+                      cachedName="NumberofVehicle"
+                      externalMetadataColumnId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output].Columns[NumberofVehicle]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Vehicle NDS"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[KhachHang]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select  vt.ID_VehicleType as Vehicle_Type_NK,  j.ID_JourneyPurpose as Journey_Purpose_NK, COUNT(v.ID) as NumberofVehicle
+from  Vehicles v, VehicleType vt, JourneyPurpose j
+where v.Vehicle_Type_SK=vt.ID and v.Journey_Purpose_of_Driver_SK =j.ID
+Group by vt.ID_VehicleType,j.ID_JourneyPurpose</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0:Input",{65D63447-0900-432C-9EB8-5CB75B45289E};"Parameter1:Input",{BFF77B64-674D-4EB6-9936-173BFA892A12};"Parameter2:Input",{65D63447-0900-432C-9EB8-5CB75B45289E};"Parameter3:Input",{BFF77B64-674D-4EB6-9936-173BFA892A12};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_NDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_NDS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output].Columns[Vehicle_Type_NK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output].ExternalColumns[Vehicle_Type_NK]"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output].Columns[Vehicle_Type_NK]"
+                      name="Vehicle_Type_NK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output].Columns[Journey_Purpose_NK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output].ExternalColumns[Journey_Purpose_NK]"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output].Columns[Journey_Purpose_NK]"
+                      name="Journey_Purpose_NK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output].Columns[NumberofVehicle]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output].ExternalColumns[NumberofVehicle]"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output].Columns[NumberofVehicle]"
+                      name="NumberofVehicle"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output].ExternalColumns[Vehicle_Type_NK]"
+                      dataType="i4"
+                      name="Vehicle_Type_NK" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output].ExternalColumns[Journey_Purpose_NK]"
+                      dataType="i4"
+                      name="Journey_Purpose_NK" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output].ExternalColumns[NumberofVehicle]"
+                      dataType="i4"
+                      name="NumberofVehicle" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Error Output].Columns[Vehicle_Type_NK]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Error Output].Columns[Vehicle_Type_NK]"
+                      name="Vehicle_Type_NK" />
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Error Output].Columns[Journey_Purpose_NK]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Error Output].Columns[Journey_Purpose_NK]"
+                      name="Journey_Purpose_NK" />
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Error Output].Columns[NumberofVehicle]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Error Output].Columns[NumberofVehicle]"
+                      name="NumberofVehicle" />
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Fact_Vehicle NDS_DDS.Paths[Lookup Error Output]"
+              endId="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input]"
+              name="Lookup Error Output"
+              startId="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle.Outputs[Lookup Error Output]" />
+            <path
+              refId="Package\Fact_Vehicle NDS_DDS.Paths[Lookup Match Output]"
+              endId="Package\Fact_Vehicle NDS_DDS\Update du lieu.Inputs[OLE DB Command Input]"
+              name="Lookup Match Output"
+              startId="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Fact_Vehicle NDS_DDS.Paths[Lookup Match Output1]"
+              endId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Fact_Vehicle NDS_DDS.Paths[Lookup Match Output2]"
+              endId="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Fact_Vehicle NDS_DDS.Paths[OLE DB Source Output]"
+              endId="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Fact_Vehicle NDS_DDS\Vehicle NDS.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="191.2,41.6"
+          Id="Package\Fact_Vehicle NDS_DDS"
+          TopLeft="103.333329227236,80.6000006405513" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Fact_Vehicle NDS_DDS">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="319.2,41.6"
+          Id="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle"
+          TopLeft="25.0666675938501,266.933326073753" />
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK"
+          TopLeft="101.833329922623,103.599997644424" />
+        <NodeLayout
+          Size="137.6,41.6"
+          Id="Package\Fact_Vehicle NDS_DDS\Vehicle NDS"
+          TopLeft="129.200000496705,15.8999997313807" />
+        <NodeLayout
+          Size="147.2,41.6"
+          Id="Package\Fact_Vehicle NDS_DDS\Update du lieu"
+          TopLeft="42.2333346909948,390.933326301043" />
+        <NodeLayout
+          Size="199.2,41.6"
+          Id="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK"
+          TopLeft="90.0666638188895,176.600001384417" />
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu"
+          TopLeft="250.233334889676,391.533326383694" />
+        <EdgeLayout
+          Id="Package\Fact_Vehicle NDS_DDS.Paths[Lookup Match Output]"
+          TopLeft="132.800000927183,308.533326073753">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-16.9666662361886,82.4000002272899"
+              Start="0,0"
+              End="-16.9666662361886,74.9000002272899">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.2065836327432" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.2065836327432"
+                    Point2="0,33.2065836327432"
+                    Point3="-4,33.2065836327432" />
+                  <mssgle:LineSegment
+                    End="-12.9666662361886,33.2065836327432" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-12.9666662361886,33.2065836327432"
+                    Point2="-16.9666662361886,33.2065836327432"
+                    Point3="-16.9666662361886,37.2065836327432" />
+                  <mssgle:LineSegment
+                    End="-16.9666662361886,74.9000002272899" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-56.6747198368443,38.2065836327432,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact_Vehicle NDS_DDS.Paths[Lookup Error Output]"
+          TopLeft="236.533334260517,308.533326073753">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="84.5000006291596,83.000000309941"
+              Start="0,0"
+              End="84.5000006291596,75.500000309941">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.448379177273" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.448379177273"
+                    Point2="0,33.448379177273"
+                    Point3="4,33.448379177273" />
+                  <mssgle:LineSegment
+                    End="80.5000006291596,33.448379177273" />
+                  <mssgle:CubicBezierSegment
+                    Point1="80.5000006291596,33.448379177273"
+                    Point2="84.5000006291596,33.448379177273"
+                    Point3="84.5000006291596,37.448379177273" />
+                  <mssgle:LineSegment
+                    End="84.5000006291596,75.500000309941" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-3.61638640417023,38.448379177273,91.7327734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact_Vehicle NDS_DDS.Paths[Lookup Match Output2]"
+          TopLeft="187.16666570637,218.200001384417">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.7333246893362"
+              Start="0,0"
+              End="0,41.2333246893362">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.2333246893362" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,14.8119748446681,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact_Vehicle NDS_DDS.Paths[Lookup Match Output1]"
+          TopLeft="190.949996870756,145.199997644424">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.4000037399925"
+              Start="0,0"
+              End="0,23.9000037399925">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.9000037399925" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,6.14531436999626,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact_Vehicle NDS_DDS.Paths[OLE DB Source Output]"
+          TopLeft="195.116665209664,57.4999997313807">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.0999979130437"
+              Start="0,0"
+              End="0,38.5999979130437">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5999979130437" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact_Vehicle NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Vehicle">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Fact_Vehicle]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact_Vehicle NDS_DDS\Lấy Vehicle_Type_SK">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Vehicle_Type]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact_Vehicle NDS_DDS\Vehicle NDS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact_Vehicle NDS_DDS\Lấy Journey_Purpose_SK">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Journey_Purpose]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact_Vehicle NDS_DDS\Insert dữ liệu">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

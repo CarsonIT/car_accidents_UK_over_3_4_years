@@ -1,0 +1,85 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="85e0aabb-27bc-4365-ae26-5c42a0913a06" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>OLAPCUBE_TTKD10</ID>
+  <MeasureGroups>
+    <MeasureGroup>
+      <ID>Fact Accidents</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="c73ace77-1ddd-4a13-9d41-66f8b97a6cef">
+          <ID>Fact Accidents</ID>
+          <Name>Fact Accidents</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="4acf247a-2c9e-48ff-a7c8-b6c0edda6c2e">
+            <DataSourceViewID>OLAPCUBE_TTKD10</DataSourceViewID>
+            <TableID>dbo_Fact_Accidents</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Fact Casualty</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="c026038a-75d4-45a7-9f2b-5e0002139b83">
+          <ID>Fact Casualty</ID>
+          <Name>Fact Casualty</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="208e20d2-1446-4be3-9d91-5f6ddea36f3c">
+            <DataSourceViewID>OLAPCUBE_TTKD10</DataSourceViewID>
+            <TableID>dbo_Fact_Casualty</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Fact Variance</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="ced6086e-2895-470f-be16-770b9613510a">
+          <ID>Fact Variance</ID>
+          <Name>Fact Variance</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="7e1c35b6-a6fd-4229-a163-7d2d5765daa9">
+            <DataSourceViewID>OLAPCUBE_TTKD10</DataSourceViewID>
+            <TableID>dbo_Fact_Variance</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Fact Vehicle</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="a067f6a2-f6ed-4dad-b6bf-16bfc446b0c1">
+          <ID>Fact Vehicle</ID>
+          <Name>Fact Vehicle</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="4eaedbef-e43d-4121-b7f2-d93faf3ade26">
+            <DataSourceViewID>OLAPCUBE_TTKD10</DataSourceViewID>
+            <TableID>dbo_Fact_Vehicle</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+  </MeasureGroups>
+</Cube>

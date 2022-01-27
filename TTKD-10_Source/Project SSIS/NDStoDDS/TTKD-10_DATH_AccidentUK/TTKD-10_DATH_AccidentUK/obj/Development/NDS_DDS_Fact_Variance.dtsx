@@ -1,0 +1,1090 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/29/2021 9:50:04 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="TTKD10"
+  DTS:CreatorName="TTKD10\ASUS"
+  DTS:DTSID="{0C5D6E57-8392-4B58-880E-AF50C75045A0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{5F866B49-1CC5-4193-9504-A80933806E73}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B052C9D5-94E4-4D85-9222-9F7F615F6447}"
+      DTS:ObjectName="LocalHost.UK_Accident_DDS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=UK_Accident_DDS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.UK_Accident_NDS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{51694DFC-3C9F-4F0E-9599-DE1C46496F07}"
+      DTS:ObjectName="LocalHost.UK_Accident_NDS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=UK_Accident_NDS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Fact_Variance NDS_DDS"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0bc8aea1-3bd1-4498-a2d1-f55f410ad82f}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Fact_Variance NDS_DDS"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Fact_Variance NDS"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[KhachHang]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH tmp (number, year)  
+as (
+select 
+	Count (id), 
+YEAR(Date)
+from 
+Accident
+
+group by 
+	YEAR(Date)
+)
+select 
+	tmp.number currentnumber,
+	tmp1.number lastnumber,
+	cast(tmp.number as float)/COALESCE(tmp1.number,tmp.number)*100 as percentt,
+	tmp.year
+from 
+	tmp 
+	left join 
+		tmp as tmp1 
+		on tmp.year - 1 = tmp1.year
+order by tmp.year</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0:Input",{65D63447-0900-432C-9EB8-5CB75B45289E};"Parameter1:Input",{BFF77B64-674D-4EB6-9936-173BFA892A12};"Parameter2:Input",{65D63447-0900-432C-9EB8-5CB75B45289E};"Parameter3:Input",{BFF77B64-674D-4EB6-9936-173BFA892A12};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_NDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_NDS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].Columns[currentnumber]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].ExternalColumns[currentnumber]"
+                      lineageId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].Columns[currentnumber]"
+                      name="currentnumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].Columns[lastnumber]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].ExternalColumns[lastnumber]"
+                      lineageId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].Columns[lastnumber]"
+                      name="lastnumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].Columns[percentt]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].ExternalColumns[percentt]"
+                      lineageId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].Columns[percentt]"
+                      name="percentt"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].Columns[year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].ExternalColumns[year]"
+                      lineageId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].Columns[year]"
+                      name="year"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].ExternalColumns[currentnumber]"
+                      dataType="i4"
+                      name="currentnumber" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].ExternalColumns[lastnumber]"
+                      dataType="i4"
+                      name="lastnumber" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].ExternalColumns[percentt]"
+                      dataType="r8"
+                      name="percentt" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].ExternalColumns[year]"
+                      dataType="i4"
+                      name="year" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Error Output].Columns[currentnumber]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Error Output].Columns[currentnumber]"
+                      name="currentnumber" />
+                    <outputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Error Output].Columns[lastnumber]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Error Output].Columns[lastnumber]"
+                      name="lastnumber" />
+                    <outputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Error Output].Columns[percentt]"
+                      dataType="r8"
+                      lineageId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Error Output].Columns[percentt]"
+                      name="percentt" />
+                    <outputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Error Output].Columns[year]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Error Output].Columns[year]"
+                      name="year" />
+                    <outputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Variance NDS_DDS\Insert dữ liệu"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert dữ liệu"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fact_Variance]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].Columns[Year_SK]"
+                      cachedDataType="i4"
+                      cachedName="Year_SK"
+                      externalMetadataColumnId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[Year_SK]"
+                      lineageId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Outputs[Lookup Match Output].Columns[Year_SK]" />
+                    <inputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].Columns[percentt]"
+                      cachedDataType="r8"
+                      cachedName="percentt"
+                      externalMetadataColumnId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[Variance]"
+                      lineageId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].Columns[percentt]" />
+                    <inputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].Columns[currentnumber]"
+                      cachedDataType="i4"
+                      cachedName="currentnumber"
+                      externalMetadataColumnId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[NumberAccident_Current_Year]"
+                      lineageId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].Columns[currentnumber]" />
+                    <inputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].Columns[lastnumber]"
+                      cachedDataType="i4"
+                      cachedName="lastnumber"
+                      externalMetadataColumnId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[NumberAccident_Last_Year]"
+                      lineageId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].Columns[lastnumber]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[Year_SK]"
+                      dataType="i4"
+                      name="Year_SK" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[Variance]"
+                      dataType="r8"
+                      name="Variance" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[NumberAccident_Current_Year]"
+                      dataType="i4"
+                      name="NumberAccident_Current_Year" />
+                    <externalMetadataColumn
+                      refId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input].ExternalColumns[NumberAccident_Last_Year]"
+                      dataType="i4"
+                      name="NumberAccident_Last_Year" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lấy Year_Sk"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Year]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Year]) [refTable]
+where [refTable].[Year] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Year_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Year" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].Columns[year]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Inputs[Lookup Input].Columns[year]"
+                      cachedDataType="i4"
+                      cachedName="year"
+                      lineageId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].Columns[year]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Year</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Outputs[Lookup Match Output].Columns[Year_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Outputs[Lookup Match Output].Columns[Year_SK]"
+                      name="Year_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Year_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Variance NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Fact_Variance]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Fact_Variance]) [refTable]
+where [refTable].[Year_SK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Year_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NumberAccident_Current_Year" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NumberAccident_Last_Year" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Variance" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Outputs[Lookup Match Output].Columns[Year_SK]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Variance NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Variance NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance.Inputs[Lookup Input].Columns[Year_SK]"
+                      cachedDataType="i4"
+                      cachedName="Year_SK"
+                      lineageId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Outputs[Lookup Match Output].Columns[Year_SK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Year_SK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Variance NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="RedirectRow"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Fact_Variance NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Variance NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Fact_Variance NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Variance NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Fact_Variance NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Variance NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Variance NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact_Variance NDS_DDS\Update du lieu"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Update du lieu"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">update Fact_Variance set Variance =?, NumberAccident_Current_Year =?, NumberAccident_Last_Year =? where 
+Year_SK=?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact_Variance NDS_DDS\Update du lieu.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.UK_Accident_DDS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact_Variance NDS_DDS\Update du lieu.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].Columns[percentt]"
+                      cachedDataType="r8"
+                      cachedName="percentt"
+                      externalMetadataColumnId="Package\Fact_Variance NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].Columns[percentt]" />
+                    <inputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].Columns[currentnumber]"
+                      cachedDataType="i4"
+                      cachedName="currentnumber"
+                      externalMetadataColumnId="Package\Fact_Variance NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].Columns[currentnumber]" />
+                    <inputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].Columns[lastnumber]"
+                      cachedDataType="i4"
+                      cachedName="lastnumber"
+                      externalMetadataColumnId="Package\Fact_Variance NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output].Columns[lastnumber]" />
+                    <inputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].Columns[Year_SK]"
+                      cachedDataType="i4"
+                      cachedName="Year_SK"
+                      externalMetadataColumnId="Package\Fact_Variance NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Outputs[Lookup Match Output].Columns[Year_SK]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Fact_Variance NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="r8"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Fact_Variance NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Fact_Variance NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Fact_Variance NDS_DDS\Update du lieu.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="i4"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact_Variance NDS_DDS\Update du lieu.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Fact_Variance NDS_DDS\Update du lieu.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact_Variance NDS_DDS\Update du lieu.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Fact_Variance NDS_DDS\Update du lieu.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Update du lieu.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Variance NDS_DDS\Update du lieu.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact_Variance NDS_DDS\Update du lieu.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact_Variance NDS_DDS\Update du lieu.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Fact_Variance NDS_DDS.Paths[Lookup Error Output]"
+              endId="Package\Fact_Variance NDS_DDS\Insert dữ liệu.Inputs[OLE DB Destination Input]"
+              name="Lookup Error Output"
+              startId="Package\Fact_Variance NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance.Outputs[Lookup Error Output]" />
+            <path
+              refId="Package\Fact_Variance NDS_DDS.Paths[Lookup Match Output]"
+              endId="Package\Fact_Variance NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Fact_Variance NDS_DDS.Paths[Lookup Match Output1]"
+              endId="Package\Fact_Variance NDS_DDS\Update du lieu.Inputs[OLE DB Command Input]"
+              name="Lookup Match Output"
+              startId="Package\Fact_Variance NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Fact_Variance NDS_DDS.Paths[OLE DB Source Output]"
+              endId="Package\Fact_Variance NDS_DDS\Lấy Year_Sk.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Fact_Variance NDS_DDS\Fact_Variance NDS.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\Fact_Variance NDS_DDS"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Fact_Variance NDS_DDS">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\Fact_Variance NDS_DDS\Insert dữ liệu"
+          TopLeft="268.566667097144,314.599996714589" />
+        <NodeLayout
+          Size="326.4,41.6"
+          Id="Package\Fact_Variance NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance"
+          TopLeft="47.8999993046126,189.599996528626" />
+        <NodeLayout
+          Size="137.6,41.6"
+          Id="Package\Fact_Variance NDS_DDS\Lấy Year_Sk"
+          TopLeft="140.666663024161,99.733334380256" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Fact_Variance NDS_DDS\Fact_Variance NDS"
+          TopLeft="129.200000496705,15.8999997313807" />
+        <NodeLayout
+          Size="147.2,41.6"
+          Id="Package\Fact_Variance NDS_DDS\Update du lieu"
+          TopLeft="55.5666668984627,320.999996631938" />
+        <EdgeLayout
+          Id="Package\Fact_Variance NDS_DDS.Paths[Lookup Match Output]"
+          TopLeft="210.283331164387,141.333334380256">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.26666214837"
+              Start="0,0"
+              End="0,40.76666214837">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.76666214837" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,14.578643574185,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact_Variance NDS_DDS.Paths[Lookup Error Output]"
+          TopLeft="264.166665971279,231.199996528626">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="75.2000011258647,83.400000185963"
+              Start="0,0"
+              End="75.2000011258647,75.900000185963">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.6040976359051" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.6040976359051"
+                    Point2="0,33.6040976359051"
+                    Point3="4,33.6040976359051" />
+                  <mssgle:LineSegment
+                    End="71.2000011258647,33.6040976359051" />
+                  <mssgle:CubicBezierSegment
+                    Point1="71.2000011258647,33.6040976359051"
+                    Point2="75.2000011258647,33.6040976359051"
+                    Point3="75.2000011258647,37.6040976359051" />
+                  <mssgle:LineSegment
+                    End="75.2000011258647,75.900000185963" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8.26638615581766,38.6040976359051,91.7327734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact_Variance NDS_DDS.Paths[OLE DB Source Output]"
+          TopLeft="211.933331760433,57.4999997313807">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.2333346488753"
+              Start="0,0"
+              End="0,34.7333346488753">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.7333346488753" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact_Variance NDS_DDS.Paths[Lookup Match Output1]"
+          TopLeft="158.033332637946,231.199996528626">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-28.8666657394832,89.8000001033121"
+              Start="0,0"
+              End="-28.8666657394832,82.3000001033121">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.1828293099199" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.1828293099199"
+                    Point2="0,36.1828293099199"
+                    Point3="-4,36.1828293099199" />
+                  <mssgle:LineSegment
+                    End="-24.8666657394832,36.1828293099199" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-24.8666657394832,36.1828293099199"
+                    Point2="-28.8666657394832,36.1828293099199"
+                    Point3="-28.8666657394832,40.1828293099199" />
+                  <mssgle:LineSegment
+                    End="-28.8666657394832,82.3000001033121" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-62.6247195884916,41.1828293099199,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact_Variance NDS_DDS\Lấy Year_Sk">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Year]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact_Variance NDS_DDS\Fact_Variance NDS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact_Variance NDS_DDS\Insert dữ liệu">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact_Variance NDS_DDS\Tìm dòng dữ liệu tương ứng trong bảng Fact_Variance">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Fact_Variance]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

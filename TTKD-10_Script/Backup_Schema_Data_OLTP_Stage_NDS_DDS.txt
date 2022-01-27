@@ -1,0 +1,3 @@
+Vì file data khá nặng nên nhóm em để trên Drive
+Script Schema and Data OLTP, Stage, NDS và DDS (file .bak) :
+https://drive.google.com/drive/folders/1Wrf-od43mTOUFQbGUo7hgFhDO1OytBvN?usp=sharing
